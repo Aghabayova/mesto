@@ -1,0 +1,11 @@
+.profile__avatar{
+    border-radius: 50%;
+    margin-right: 40px;
+    width: 150px;
+    
+}
+
+@media (max-width: 750px){
+    .profile__avatar{
+        align-self: center;
+}
