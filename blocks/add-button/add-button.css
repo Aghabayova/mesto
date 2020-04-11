@@ -4,7 +4,8 @@
    background-image: url(../../images/Add\ Button.svg);
    background-color: black;
    background-size: cover;
-   margin-left: auto;  
+   margin-left: auto;
+   cursor: pointer;
    
 }
 
