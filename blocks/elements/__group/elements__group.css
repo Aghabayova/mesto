@@ -1,0 +1,8 @@
+.elements__group{
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+    row-gap: 21px;
+    column-gap: 18px;
+    max-width: 882px;
+    justify-content: center;
+}
