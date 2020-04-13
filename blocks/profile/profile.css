@@ -11,17 +11,24 @@
 .profile{
     max-width: 882px;
     margin: 40px auto 51px;
+    display: -webkit-box;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    -webkit-box-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+            align-items: center;
     
     
 }
 @media (max-width: 750px){
     .profile{
-        flex-direction: column;
-       justify-content: center;
-       align-items: center;
-       margin: 40px auto;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+                flex-direction: column;
+       -webkit-box-pack: center;
+               justify-content: center;
+       -webkit-box-align: center;
+               align-items: center;
+       margin: 35px auto;
     }
 }

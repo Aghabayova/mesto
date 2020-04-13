@@ -2,11 +2,16 @@
     background-color: #FFFFFF;
     color: black;
     height: 79px;
+    display: -webkit-box;
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+            flex-direction: row;
+    -webkit-box-align: center;
+            align-items: center;
     max-width: 246px;
-    justify-content: space-around;
+    -webkit-box-pack: justify;
+            justify-content: space-between;
     margin: 0 auto;
     
 

@@ -1,0 +1,35 @@
+.popup__close{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+	top: -57px;
+	right: -45px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transform: rotate(45deg);
+   /* background-color: rgba( 0, 0, 0, 0.8);*/
+    color: #ffffff;
+    font-size: 72px;
+    font-weight: 200;
+    transition: opacity .2s ease-out;
+
+  
+	
+}
+.popup__close:hover{
+    opacity: 0.6;
+}
+
+@media (max-width: 550px){
+    .popup__close{
+        top: 8px;
+        right: 8px; 
+        background-color: white;
+        color: black;
+        font-size: 40px;
+        
+        
+        
+    }
+ }
