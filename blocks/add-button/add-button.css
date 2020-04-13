@@ -6,9 +6,14 @@
    background-size: cover;
    margin-left: auto;
    cursor: pointer;
+   outline: none;
+   transition: opacity .2s ease-out;
    
 }
+.add-button:hover{
 
+   opacity: 0.6;
+}
 @media (max-width: 750px){
    .add-button{
       margin: 0 auto;

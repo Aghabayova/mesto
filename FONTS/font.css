@@ -1,5 +1,4 @@
-
-}@font-face{
+@font-face{
   src: url(./Inter-Regular.woff),
   url(./Inter-Regular.woff2);
   font-family: 'Inter';
@@ -30,9 +29,9 @@
 }
 
 @font-face{
-  src: url(./Inter-Light.woff),
-  url(./Inter-Light.woff2);
+  src: url(./Inter-ExtraLight.woff),
+  url(./Inter-ExtraLight.woff2);
   font-family: 'Inter';
   font-style: normal;
-  font-weight: 300;
+  font-weight: 200;
 }

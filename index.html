@@ -24,9 +24,9 @@
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
                         <p class="profile__description">Исследователь океана</p>
                     </div>
-                    <button class="profile__edit-button" type="button"  onclick="location.href='#'"></button>
+                    <button class="profile__edit-button" type="button"  onclick="editProfile()"></button>
                 </div>
-                <button class="add-button" type="button"  onclick="location.href='#'"></button>
+                <button class="add-button" type="button"  onclick="addPhoto()"></button>
                 
             </section>
             <section class="elements">
@@ -78,24 +78,26 @@
             </section>
             <section class="popup popup_opened">
                 <div class="popup__content">
-                    <div class="popup__close">+</div>
-                    <h3 class="popup__heading">Редактировать профиль</h3>
-                    <form class="popup__form" action="">
-                        <input class="popup__name-field" placeholder="Название" type="text">
-                        <input class="popup__description-field" placeholder="Исполнитель" type="text">
-                        <button class="popup__save-btn" type="submit"  onclick="location.href='#'">Сохранить</button>
-                    </form>
+                    <button class="popup__close" type="button"  onclick="closeButton()">+</button>
                     
+                    <form class="popup__form" action="">
+                        <h3 class="popup__heading">Редактировать профиль</h3>
+                        <input class="popup__name-field" placeholder="Имя" type="text">
+                        <input class="popup__description-field" placeholder="О себе" type="text">
+                        <button class="popup__save-btn" type="submit"  onclick="SaveProfileChanges()">Сохранить</button>
+                    </form>
+                </div>    
             </section>
             
         </main>
         <footer class="footer">
+            <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     
                
         </footer>
     </div>
     
-    <script src="JS/script.js"></script>
+    <script src="JS/script.js"> </script>
 
 </body>
 </html>
