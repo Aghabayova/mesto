@@ -28,3 +28,11 @@
   font-style: normal;
   font-weight: 500;
 }
+
+@font-face{
+  src: url(./Inter-Light.woff),
+  url(./Inter-Light.woff2);
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+}

@@ -27,6 +27,7 @@
                     <button class="profile__edit-button" type="button"  onclick="location.href='#'"></button>
                 </div>
                 <button class="add-button" type="button"  onclick="location.href='#'"></button>
+                
             </section>
             <section class="elements">
                 <div class="elements__group">
@@ -75,7 +76,17 @@
                 </div>
 
             </section>
-            
+            <section class="popup popup_opened">
+                <div class="popup__content">
+                    <div class="popup__close">+</div>
+                    <h3 class="popup__heading">Редактировать профиль</h3>
+                    <form class="popup__form" action="">
+                        <input class="popup__name-field" placeholder="Название" type="text">
+                        <input class="popup__description-field" placeholder="Исполнитель" type="text">
+                        <button class="popup__save-btn" type="submit"  onclick="location.href='#'">Сохранить</button>
+                    </form>
+                    
+            </section>
             
         </main>
         <footer class="footer">
@@ -83,5 +94,8 @@
                
         </footer>
     </div>
+    
+    <script src="JS/script.js"></script>
+
 </body>
 </html>
