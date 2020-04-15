@@ -19,15 +19,9 @@
 
 }
 
-@media (max-width: 550px){
-    .popup__save-btn{
-        width: 282px;
-    }
-}
-
-
-@media (max-width: 320px){
+@media (max-width: 450px){
     .popup__save-btn{
         width: 240px;
     }
 }
+
