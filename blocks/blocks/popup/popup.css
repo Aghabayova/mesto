@@ -1,0 +1,24 @@
+@import url(./__heading/popup__heading.css);
+@import url(./__close/popup__close.css);
+@import url(./__name-field/popup__name-field.css);
+@import url(./__description-field/popup__description-field.css);
+@import url(./__save-btn/popup__save-btn.css);
+@import url(./__content/popup__content.css);
+@import url(./__form/popup__form.css);
+@import url(./_opened/popup_opened.css);
+
+
+.popup{
+    background-color: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+    top: 0;
+    right: 0;
+	-webkit-box-pack: center;
+	        justify-content: center;
+    -webkit-box-align: center;
+            align-items: center;
+    position: fixed;
+
+}
