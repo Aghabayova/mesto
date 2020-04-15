@@ -8,26 +8,13 @@
     text-align: left;   
 
 }
-@media (max-width: 550px){
-    .popup__heading{
-       
-        font-size: 22px;
-        line-height: 29px;
-        max-width: 282px;
-        margin: 47px auto 30px;
-        
-    }
-}
 
-@media (max-width: 550px){
+@media (max-width: 450px){
     .popup__heading{
-        font-size: 16px;
+        font-size: 18px;
         line-height: 20px;
-       
-    
-      
         max-width: 240px;
-        
+        margin: 30px auto 30px;
         
     }
 }

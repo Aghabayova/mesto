@@ -2,20 +2,21 @@
     position: absolute;
     width: 40px;
     height: 40px;
-	top: -57px;
-	right: -45px;
+	top: -48px;
+	right: -32px;
     cursor: pointer;
     border: none;
     outline: none;
-    transform: rotate(45deg);
-   /* background-color: rgba( 0, 0, 0, 0.8);*/
     color: #ffffff;
-    font-size: 72px;
+    font-size: 80px;
+    line-height: 20px;
     font-weight: 200;
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transition: opacity .2s ease-out;
     transition: opacity .2s ease-out;
-
-  
-	
+    background: transparent;
+    
 }
 .popup__close:hover{
     opacity: 0.6;
@@ -23,9 +24,8 @@
 
 @media (max-width: 550px){
     .popup__close{
-        top: 8px;
-        right: 8px; 
-        background-color: white;
+        top: 0;
+        right: 0; 
         color: black;
         font-size: 40px;
         
