@@ -16,9 +16,9 @@
     top: 0;
     right: 0;
 	-webkit-box-pack: center;
-	        justify-content: center;
+	justify-content: center;
     -webkit-box-align: center;
-            align-items: center;
+    align-items: center;
     position: fixed;
 
 }
