@@ -6,13 +6,14 @@
     display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-            flex-direction: row;
+    flex-direction: row;
     -webkit-box-align: center;
-            align-items: center;
+    align-items: center;
     max-width: 246px;
     -webkit-box-pack: justify;
-            justify-content: space-between;
+    justify-content: space-between;
     margin: 0 auto;
-    
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
 
 }

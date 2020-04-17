@@ -15,8 +15,10 @@
     margin-left: 25px;
     margin-top: 17px;
     outline: none;
-    -webkit-transition: opacity .2s ease-out;
-    transition: opacity .2s ease-out;
+    border:none;
+    -webkit-transition: opacity .2s ;-webkit-transition
+    -webkit-transition: opacity .2s ease-out;-webkit-transition-webkit-transition-webkit-transition
+    transition: opacity .2s ease-out;transitiontransition
 
 }
 .profile__edit-button:hover{

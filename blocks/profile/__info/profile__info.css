@@ -3,13 +3,13 @@
     margin-top: 23px;display: -webkit-box;display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-            flex-direction: row;
+    flex-direction: row;
    
     
 }
 
 @media (max-width: 750px){
     .profile__info{
-       max-width: 280px;
+        max-width: 280px;
     }
 }
