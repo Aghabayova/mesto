@@ -4,7 +4,6 @@
 @import url(./__save-btn/popup__save-btn.css);
 @import url(./__content/popup__content.css);
 @import url(./__form/popup__form.css);
-@import url(./_opened/popup_opened.css);
 
 
 .popup{
@@ -19,5 +18,6 @@
     -webkit-box-align: center;
     align-items: center;
     position: fixed;
+    display: none;
 
 }
