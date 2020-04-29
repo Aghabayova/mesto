@@ -1,0 +1,16 @@
+@import url(./__close/popup-view__close.css);
+@import url(./__image/popup-view__image.css);
+@import url(./__caption/popup-view__caption.css);
+
+.popup-view{
+    margin: 100px auto 0;
+    position: relative;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    max-width: 75vw;
+    max-height: 75vh;
+
+
+}
+

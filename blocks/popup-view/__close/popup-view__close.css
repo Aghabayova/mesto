@@ -1,0 +1,32 @@
+.popup-view__close{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: -49px;
+	right: 105px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-size: 80px;
+    line-height: 20px;
+    font-weight: 200;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transition: opacity .2s ease-out;
+    transition: opacity .2s ease-out;
+    background: transparent;
+    
+}
+.popup-view__close:hover{
+    opacity: 0.6;
+}
+
+@media (max-width: 550px){
+    .popup-view__close{
+        top: 0;
+        right: 0; 
+        color: black;
+        font-size: 40px;   
+    }
+ }
