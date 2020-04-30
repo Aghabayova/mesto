@@ -42,25 +42,25 @@
             </section>
             
             <section class="popup" id="edit-popup">
-                <div class="popup__content">
+                <div class="popup__content" id="edit-popup-form">
                     <button class="popup__close popup__close_edit" type="button">+</button>
                     
-                    <form class="popup__form" id="edit-popup-form" action="#">
+                    <form class="popup__form"  action="#">
                         <h3 class="popup__heading">Редактировать профиль</h3>
                         <input class="popup__field popup__field_name" placeholder="Имя" type="text" name="name"/>
                         <input class="popup__field popup__field_job" placeholder="О себе" type="text" name="job"/>
-                        <button class="popup__save-btn" type="submit">Сохранить</button>
+                        <button class="popup__save-btn" id="popup-save-btn"  type="submit">Сохранить</button>
                     </form>
                 </div>    
             </section>
             <section class="popup" id="new-item-popup">
-                <div class="popup__content">
+                <div class="popup__content" id="new-item-form">
                     <button class="popup__close popup__close_new-item" type="button">+</button>
-                    <form class="popup__form" id="new-item-form" action="">
+                    <form class="popup__form" action="">
                         <h3 class="popup__heading">Новое место</h3>
                         <input class="popup__field popup__field_card" placeholder="Название" type="text" name="place"/>
                         <input class="popup__field popup__field_link" placeholder="Ссылка на картинку" type="text" name="link"/>
-                        <button class="popup__save-btn popup__save_create-btn" type="submit">Создать</button>
+                        <button class="popup__save-btn" id="popup-create-btn" type="submit">Создать</button>
                     </form>
                 </div>
             </section>
