@@ -25,33 +25,27 @@ const initialCards = [ //массив карточек
     }
 ];
 
-let popup = document.querySelector('.popup');
 let name = document.querySelector('.profile__name');
 let job = document.querySelector('.profile__description');
 let inputName = document.querySelector('.popup__field_name');
 let inputJob = document.querySelector('.popup__field_job');
 const profileEditBtn = document.querySelector('.profile__edit-button');
 const popupClose = document.querySelector('.popup__close_edit');
-let formElement = document.querySelector('#edit-popup-form');
+const formElement = document.querySelector('#edit-popup-form');
 const addBtn = document.querySelector('.add-button');
 const popupCloseNewItem = document.querySelector('.popup__close_new-item');
 const cardsSection =document.querySelector('.elements'); 
 let newCard = document.querySelector('.popup__field_card');
 let newCardLink = document.querySelector('.popup__field_link');
-let formNewElement = document.querySelector('#new-item-form');
+const formNewElement = document.querySelector('#new-item-form');
 const viewCardClose = document.querySelector('.popup-view__close');
 const imageValue = document.querySelector('.popup-view__image');
 const imageNameValue = document.querySelector('.popup-view__caption');
-const createBtn = document.querySelector('#popup-create-btn');
-const editSaveBtn = document.querySelector('#popup-save-btn');
+
 //выбираем необходимые попапы по ID
-let editPopup = document.querySelector('#edit-popup');
-let newItemPopup = document.querySelector('#new-item-popup');
+const editPopup = document.querySelector('#edit-popup');
+const newItemPopup = document.querySelector('#new-item-popup');
 const viewImage = document.querySelector('#view-image');
-
-
-
- 
 
 
 
@@ -95,12 +89,12 @@ function createCard(name, link) {
     })
       //card VIEW function
     cardElement.querySelector('.elements__image').addEventListener('click', function() { 
-        openImage(name, link);
+        openImage(name, link); //open card view
     });
-     //adding cards to the end of array 
+     //adding cards to the beginning of page
     cardsSection.prepend(cardElement);
     }
-   
+     
     initialCards.forEach(function (item){
         createCard(item.name,item.link);
      });
@@ -112,7 +106,7 @@ function createCard(name, link) {
 function formSubmitHandler (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
 
-    if (inputName.value != '') {
+    if (inputName.value != '') { 
         name.textContent= inputName.value;
         }
         else {
@@ -132,11 +126,11 @@ function formSubmitHandler (evt) {
 function formSubmitCard (evt){
     evt.preventDefault(); //отменяет стандартную отправку формы.
 
-    //cardsSection.prepend(createCard(newCard.value, newCardLink.value));// adding new image to the beginning of array
+    //adding new image to the beginning of array
     createCard(newCard.value, newCardLink.value);
     newCard.value = '';
     newCardLink.value = '';
-   openClosePopup(newItemPopup);
+    openClosePopup(newItemPopup);
 }
 
 
@@ -155,11 +149,6 @@ popupCloseNewItem.addEventListener('click',() =>
 viewCardClose.addEventListener('click', () => 
     openClosePopup(viewImage)); // закрываем попап просмотра
 
-//editSaveBtn.addEventListener('click', () => 
-//openClosePopup(editPopup)); // закрываем при нажатии кнопки "сохранить" rabotaet bez nee.
-
-//createBtn.addEventListener('click', () => 
-//openClosePopup(newItemPopup)); // закрываем попап при нажатии кнопки "создать"
 
 
 // Прикрепляем обработчик к форме:
