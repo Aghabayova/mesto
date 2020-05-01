@@ -17,7 +17,11 @@
 
 @media (max-width: 450px){
     .popup__field{ 
-        width: 240px;
+        width: 200px;
+        font-size: 12px;
+        line-height: 15px;
+        padding-bottom: 12px;
+        margin: 20px auto;
     }
 }
 

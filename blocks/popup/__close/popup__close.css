@@ -22,11 +22,9 @@
     opacity: 0.6;
 }
 
-@media (max-width: 550px){
+@media (max-width: 450px){
     .popup__close{
-        top: 0;
-        right: 0; 
-        color: black;
-        font-size: 40px;   
+        font-size: 72px;
+        line-height: 20px;
     }
  }

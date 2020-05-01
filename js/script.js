@@ -36,8 +36,8 @@ let formElement = document.querySelector('#edit-popup-form');
 const addBtn = document.querySelector('.add-button');
 const popupCloseNewItem = document.querySelector('.popup__close_new-item');
 const cardsSection =document.querySelector('.elements'); 
-const newCard = document.querySelector('.popup__field_card');
-const newCardLink = document.querySelector('popup__field_link');
+let newCard = document.querySelector('.popup__field_card');
+let newCardLink = document.querySelector('.popup__field_link');
 let formNewElement = document.querySelector('#new-item-form');
 const viewCardClose = document.querySelector('.popup-view__close');
 const imageValue = document.querySelector('.popup-view__image');
@@ -98,11 +98,11 @@ function createCard(name, link) {
         openImage(name, link);
     });
      //adding cards to the end of array 
-    cardsSection.append(cardElement);
+    cardsSection.prepend(cardElement);
     }
    
     initialCards.forEach(function (item){
-        createCard(item.name,item.link)
+        createCard(item.name,item.link);
      });
     
 
@@ -111,9 +111,7 @@ function createCard(name, link) {
 // она никуда отправляться не будет
 function formSubmitHandler (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-    
-    popup.classList.remove('popup_opened');
- 
+
     if (inputName.value != '') {
         name.textContent= inputName.value;
         }
@@ -127,15 +125,17 @@ function formSubmitHandler (evt) {
         else {
             job.textContent = job.textContent;
         }
-
+     openClosePopup(editPopup);
 }
 
 
 function formSubmitCard (evt){
     evt.preventDefault(); //отменяет стандартную отправку формы.
 
-    cardsSection.prepend(createCard(newCard.value, newCardLink.value));// adding new image to the beginning of array
-
+    //cardsSection.prepend(createCard(newCard.value, newCardLink.value));// adding new image to the beginning of array
+    createCard(newCard.value, newCardLink.value);
+    newCard.value = '';
+    newCardLink.value = '';
    openClosePopup(newItemPopup);
 }
 
@@ -155,11 +155,11 @@ popupCloseNewItem.addEventListener('click',() =>
 viewCardClose.addEventListener('click', () => 
     openClosePopup(viewImage)); // закрываем попап просмотра
 
-editSaveBtn.addEventListener('click', () => 
-openClosePopup(editPopup)); // закрываем при нажатии кнопки "сохранить"
+//editSaveBtn.addEventListener('click', () => 
+//openClosePopup(editPopup)); // закрываем при нажатии кнопки "сохранить" rabotaet bez nee.
 
-createBtn.addEventListener('click', () => 
-openClosePopup(newItemPopup)); // закрываем попап при нажатии кнопки "создать"
+//createBtn.addEventListener('click', () => 
+//openClosePopup(newItemPopup)); // закрываем попап при нажатии кнопки "создать"
 
 
 // Прикрепляем обработчик к форме:

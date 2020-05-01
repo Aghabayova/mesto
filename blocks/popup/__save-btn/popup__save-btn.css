@@ -22,7 +22,11 @@
 
 @media (max-width: 450px){
     .popup__save-btn{
-        width: 240px;
+        width: 200px;
+        margin: 35px auto 30px;
+        height: 40px;
+        font-size: 14px;
+        line-height: 17px;
     }
 }
 
