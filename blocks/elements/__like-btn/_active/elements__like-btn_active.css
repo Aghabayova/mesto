@@ -1,7 +1,5 @@
-
-
-.elements__like-btn{
-    background-image: url(../../../images/like.svg);
+.elements__like-btn_active{
+    background-image: url(../../../../images/like-active.svg);
     height: 18px;
     background-size: cover;
     width: 22px;
@@ -12,9 +10,4 @@
     transition: opacity .2s ease-out;
     padding: 0;
     outline: 0;
-
-}
-.elements__like-btn:hover{
-    opacity: 0.6;
-    transform: scale(1.3);
 }

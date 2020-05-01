@@ -1,7 +1,12 @@
-.popap__form{
+.popup__form{
    max-width: 358px;
    margin: 0 auto;
 
 }
 
 
+@media (max-width: 450px){
+   .popup__form{
+       max-width: 240px;
+   }
+}

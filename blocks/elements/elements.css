@@ -1,13 +1,24 @@
-@import url(./__group/elements__group.css);
+/*@import url(./__group/elements__group.css);*/
 @import url(./__item/elements__item.css);
 @import url(./__image/elements__image.css);
 @import url(./__description/elements__description.css);
 @import url(./__title/elements__title.css);
 @import url(./__like-btn/elements__like-btn.css);
+@import url(./__like-btn/_active/elements__like-btn_active.css);
+@import url(./__trash/elements__trash.css);
+@import url(./_image-delete/elements_image-delete.css);
 
 
 .elements{
-max-width: 882px;
-margin: 0 auto;
-
+    max-width: 882px;
+    margin: 0 auto;
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+    row-gap: 21px;
+    -webkit-column-gap: 18px;
+    -moz-column-gap: 18px;
+    column-gap: 18px;
+    max-width: 882px;
+    -webkit-box-pack: center;
+    justify-content: center;
 }

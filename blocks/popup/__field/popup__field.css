@@ -1,4 +1,4 @@
-.popup__name-field{
+.popup__field{
     width: 358px;
     display: block;
     font-weight: normal;
@@ -10,14 +10,18 @@
     border-bottom: 1px solid rgba(0,0,0,.2);
     padding-bottom: 13px;
 }
-.popup__name-field:focus{
+.popup__field:focus{
     border-color: black;
 
 }
 
 @media (max-width: 450px){
-    .popup__name-field{
-        width: 240px;
+    .popup__field{ 
+        width: 200px;
+        font-size: 12px;
+        line-height: 15px;
+        padding-bottom: 12px;
+        margin: 20px auto;
     }
 }
 

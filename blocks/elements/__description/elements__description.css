@@ -13,5 +13,7 @@
     -webkit-box-pack: justify;
     justify-content: space-between;
     margin: 0 auto;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
 
 }

@@ -1,0 +1,13 @@
+@import url(./__close/popup-view__close.css);
+@import url(./__image/popup-view__image.css);
+@import url(./__caption/popup-view__caption.css);
+
+
+.popup-view{
+    position: relative;
+    margin: 0;
+
+
+
+}
+
