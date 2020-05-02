@@ -8,13 +8,13 @@
     
     <title>Место</title>
 </head>
-<body class="content">
+<body>
     <div class="page">
         <header class="header">
            <img class="logo" src="./images/logo.svg" alt="лого">
         </header>
      
-        <main class="content">
+        <main>
             <section class="profile">
                 <img class="profile__avatar" src="./images/avatar.jpg" alt="аватар">
 
@@ -59,7 +59,7 @@
                     <form class="popup__form" action="">
                         <h3 class="popup__heading">Новое место</h3>
                         <input class="popup__field popup__field_card" placeholder="Название" type="text" name="place"/>
-                        <input class="popup__field popup__field_link" placeholder="Ссылка на картинку" type="text" name="link"/>
+                        <input class="popup__field popup__field_link" placeholder="Ссылка на картинку" type="url" required name="link"/>
                         <button class="popup__save-btn" id="popup-create-btn" type="submit">Создать</button>
                     </form>
                 </div>

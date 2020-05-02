@@ -14,6 +14,7 @@
     justify-content: flex-start;
     -webkit-box-align: center;
     align-items: center;
+    padding: 0 40px;
     
     
 }
@@ -27,5 +28,6 @@
         -webkit-box-align: center;
         align-items: center;
         margin: 35px auto;
+        padding: 0;
     }
 }
