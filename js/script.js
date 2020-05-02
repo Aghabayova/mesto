@@ -50,12 +50,16 @@ const viewImage = document.querySelector('#view-image');
 //calling template for cards
 const cardsTemplate = document.querySelector('#elements-template').content;
 
+//remove of eventListeners
+
+
 // функция закрытия/открытия - можно переиспользовать для разных попапов
 function openClosePopup(elem) {
     inputName.value = name.textContent;
     inputJob.value = job.textContent;
     elem.classList.toggle('popup_opened');
 }
+
 
 function openImage (imageName, imageLink) {//функция просмотра карточек 
     imageValue.src = imageLink;

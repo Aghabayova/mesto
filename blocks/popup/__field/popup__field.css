@@ -17,6 +17,15 @@
 */
 @media (max-width: 500px){
     .popup__field{ 
+        width: 300px;
+        font-size: 12px;
+        line-height: 15px;
+        padding-bottom: 12px;
+        margin: 20px auto;
+    }
+}
+@media (max-width: 400px){
+    .popup__field{ 
         width: 200px;
         font-size: 12px;
         line-height: 15px;

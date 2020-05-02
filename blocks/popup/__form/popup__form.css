@@ -5,7 +5,7 @@
 }
 
 
-@media (max-width: 500px){
+@media (max-width: 375px){
    .popup__form{
        max-width: 240px;
    }
