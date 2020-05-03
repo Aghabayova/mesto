@@ -76,38 +76,38 @@ function cardLike (evt){
 function cardDelete (evt){
     evt.target.closest('.element').remove();
 }
+
 function createCard(name, link) {
-    
     //cloning template content;
     const cardElement = cardsTemplate.cloneNode(true);
     cardElement.querySelector('.element__image').src = link;
     cardElement.querySelector('.element__title').textContent = name;
     cardElement.querySelector('.element__image').alt = name;
-    
-    //Like btn listener
-    cardElement.querySelector('.element__like-btn').addEventListener('click', cardLike);
-    //card DELETE function
-    cardElement.querySelector('.element__trash').addEventListener('click', cardDelete);
-     
+    // Like and Delete buttons
+    const buttonLike = cardElement.querySelector('.element__like-btn');
+    const buttonTrash = cardElement.querySelector('.element__trash');
+    // eventListeners for buttons
+    buttonLike.addEventListener('click', cardLike);
+    buttonTrash.addEventListener('click', cardDelete);
       //card VIEW function
-    cardElement.querySelector('.element__image').addEventListener('click', function() { 
+    cardElement.querySelector('.element__image').addEventListener('click', function(buttonLike, buttonTrash ) {
+    //removing eventListeners from deleted images
+    buttonLike.removeEventListener('click', cardLike);
+    buttonTrash.removeEventListener('click', cardDelete);
         openImage(name, link); //open card view
-    });
-    return cardElement; 
-     //adding cards to the beginning of page
-   // cardsSection.prepend(cardElement);
-    }
+    } , {onсe : true} );  // удаляем клик с cardElement.querySelector('.element__image').
+    return cardElement;
+    } 
+
 
     //функция добавления карточек из массива
-    function addCards (initialCards) {
-        initialCards.forEach(function (item){
-         cardsSection.append(createCard(item.name,item.link));
-        });
-    }
+function addCards (initialCards) {
+    initialCards.forEach(function (item){
+    cardsSection.append(createCard(item.name,item.link));
+    }); //adding cards from array
+}
      
    
-    
-
 
 // Обработчик «отправки» формы, пока
 // она никуда отправляться не будет
@@ -119,7 +119,7 @@ function formSubmitHandler (evt) {
         job.textContent = inputJob.value;
     }
 
-     openClosePopup(editPopup);
+    openClosePopup(editPopup);
 }
 
 
