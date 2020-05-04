@@ -28,15 +28,15 @@
                 <button class="add-button" type="button"></button>
                 
             </section>
-            <section class="elements">
-                <template id="elements-template">
-                    <div class="element">
-                        <img class="element__image" src="" alt="Изображение">
-                        <div class="element__description">
-                            <h3 class="element__title"></h3>
-                            <button class="element__like-btn" type="button"></button>
+            <section class="cards">
+                <template id="cards-template">
+                    <div class="card">
+                        <img class="card__image" src="" alt="Изображение">
+                        <div class="card__description">
+                            <h3 class="card__title"></h3>
+                            <button class="card__like-btn" type="button"></button>
                         </div>
-                        <button class="element__trash" type="button"></button>
+                        <button class="card__trash" type="button"></button>
                     </div>
                 </template>
             </section>
@@ -45,7 +45,7 @@
                 <div class="popup__content" id="edit-popup-form">
                     <button class="popup__close" id="popup-close-edit" type="button">+</button>
                     
-                    <form class="popup__form"  action="#">
+                    <form class="popup__form">
                         <h3 class="popup__heading">Редактировать профиль</h3>
                         <input class="popup__field popup__field_name" placeholder="Имя" type="text" name="name"/>
                         <input class="popup__field popup__field_job" placeholder="О себе" type="text" name="job"/>
@@ -56,7 +56,7 @@
             <section class="popup" id="new-item-popup">
                 <div class="popup__content" id="new-item-form">
                     <button class="popup__close" id="popup-close-new-item" type="button">+</button>
-                    <form class="popup__form" action="">
+                    <form class="popup__form">
                         <h3 class="popup__heading">Новое место</h3>
                         <input class="popup__field popup__field_card" placeholder="Название" type="text" name="place"/>
                         <input class="popup__field popup__field_link" placeholder="Ссылка на картинку" type="url" required name="link"/>

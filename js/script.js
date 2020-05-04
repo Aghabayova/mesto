@@ -34,7 +34,7 @@ const popupClose = document.querySelector('#popup-close-edit');
 const formElement = document.querySelector('#edit-popup-form');
 const addBtn = document.querySelector('.add-button');
 const popupCloseNewItem = document.querySelector('#popup-close-new-item');
-const cardsSection =document.querySelector('.elements'); 
+const cardsSection =document.querySelector('.cards'); 
 const newCard = document.querySelector('.popup__field_card');
 const newCardLink = document.querySelector('.popup__field_link');
 const formNewElement = document.querySelector('#new-item-form');
@@ -48,56 +48,84 @@ const newItemPopup = document.querySelector('#new-item-popup');
 const viewImage = document.querySelector('#view-image');
  
 //calling template for cards
-const cardsTemplate = document.querySelector('#elements-template').content;
+const cardsTemplate = document.querySelector('#cards-template').content;
 
 //remove of eventListeners
 
 
 // функция закрытия/открытия - можно переиспользовать для разных попапов
 function openClosePopup(elem) {
-    inputName.value = name.textContent;
-    inputJob.value = job.textContent;
+    
+    //Если данный попап editPopup добовляем input дефаулт значения
+    if(elem === editPopup) {
+        inputName.value = name.textContent;
+        inputJob.value = job.textContent;
+        console.log(inputName.value);
+    }
+
     elem.classList.toggle('popup_opened');
 }
 
-
+/*
 function openImage (imageName, imageLink) {//функция просмотра карточек 
     imageValue.src = imageLink;
     imageValue.alt = imageName;
     imageNameValue.textContent = imageName;
     openClosePopup(viewImage)
-
 }
+*/
+
+
+function openImage (evt) {//функция просмотра карточек 
+    imageValue.src = evt.target.src;
+    imageValue.alt = evt.target.alt;
+    imageNameValue.textContent = evt.target.alt;
+    openClosePopup(viewImage)
+}
+
 //card Like function
 function cardLike (evt){
-    evt.target.classList.toggle('element__like-btn_active');  
+    evt.target.classList.toggle('card__like-btn_active');  
 }
 //card Delete function
 function cardDelete (evt){
-    evt.target.closest('.element').remove();
+    //before deleting card removing eventListeners for like btn, delete btn and image viewing 
+    const buttonLike = evt.target.closest('.card').querySelector('.card__like-btn');
+    buttonLike.removeEventListener('click',cardLike);
+
+    const buttonTrash = evt.target.closest('.card').querySelector('.card__trash');
+    buttonTrash.removeEventListener('click',cardDelete);
+
+    const imageView = evt.target.closest('.card').querySelector('.card__image');
+    imageView.removeEventListener('click',openImage);
+
+    //deleting card
+    evt.target.closest('.card').remove();
+ 
 }
+
 
 function createCard(name, link) {
     //cloning template content;
     const cardElement = cardsTemplate.cloneNode(true);
-    cardElement.querySelector('.element__image').src = link;
-    cardElement.querySelector('.element__title').textContent = name;
-    cardElement.querySelector('.element__image').alt = name;
+    cardElement.querySelector('.card__image').src = link;
+    cardElement.querySelector('.card__title').textContent = name;
+    cardElement.querySelector('.card__image').alt = name;
+    
     // Like and Delete buttons
-    const buttonLike = cardElement.querySelector('.element__like-btn');
-    const buttonTrash = cardElement.querySelector('.element__trash');
+    const buttonLike = cardElement.querySelector('.card__like-btn');
+    const buttonTrash = cardElement.querySelector('.card__trash');
+    const imageView = cardElement.querySelector('.card__image');
+    
     // eventListeners for buttons
     buttonLike.addEventListener('click', cardLike);
     buttonTrash.addEventListener('click', cardDelete);
-      //card VIEW function
-    cardElement.querySelector('.element__image').addEventListener('click', function(buttonLike, buttonTrash ) {
-    //removing eventListeners from deleted images
-    buttonLike.removeEventListener('click', cardLike);
-    buttonTrash.removeEventListener('click', cardDelete);
-        openImage(name, link); //open card view
-    } , {onсe : true} );  // удаляем клик с cardElement.querySelector('.element__image').
+    imageView.addEventListener('click', openImage); 
+
     return cardElement;
-    } 
+} 
+
+
 
 
     //функция добавления карточек из массива
