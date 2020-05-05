@@ -136,7 +136,7 @@ function addCards (initialCards) {
 function formSubmitHandler (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
 
-    if( (inputName.value !== "") && (inputJob.value !== '') )   {
+    if( (inputName.value !== '') && (inputJob.value !== '') )   {
         name.textContent = inputName.value;
         job.textContent = inputJob.value;
     }
