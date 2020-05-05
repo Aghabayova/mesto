@@ -20,5 +20,7 @@
 .card__trash:hover {
     cursor: pointer;
     opacity: .6;
+    -webkit-transition: .2s linear ease-in-out;
+    -o-transition: .2s linear ease-in-out;
     transition: .2s linear ease-in-out;
   }
