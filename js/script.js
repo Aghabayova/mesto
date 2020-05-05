@@ -57,26 +57,15 @@ const cardsTemplate = document.querySelector('#cards-template').content;
 function openClosePopup(elem) {
     
     //Если данный попап editPopup добовляем input дефаулт значения
-    if(elem === editPopup) {
+    if( (elem === editPopup) && (!elem.classList.contains('popup_opened')) ) {
         inputName.value = name.textContent;
         inputJob.value = job.textContent;
-        console.log(inputName.value);
     }
-
     elem.classList.toggle('popup_opened');
 }
 
-/*
-function openImage (imageName, imageLink) {//функция просмотра карточек 
-    imageValue.src = imageLink;
-    imageValue.alt = imageName;
-    imageNameValue.textContent = imageName;
-    openClosePopup(viewImage)
-}
-*/
-
-
-function openImage (evt) {//функция просмотра карточек 
+//функция просмотра карточек 
+function openImage (evt) {
     imageValue.src = evt.target.src;
     imageValue.alt = evt.target.alt;
     imageNameValue.textContent = evt.target.alt;
@@ -90,32 +79,37 @@ function cardLike (evt){
 //card Delete function
 function cardDelete (evt){
     //before deleting card removing eventListeners for like btn, delete btn and image viewing 
-    const buttonLike = evt.target.closest('.card').querySelector('.card__like-btn');
-    buttonLike.removeEventListener('click',cardLike);
+    
+    const removeCard = evt.target.closest('.card');
 
-    const buttonTrash = evt.target.closest('.card').querySelector('.card__trash');
+    const buttonLike = removeCard.querySelector('.card__like-btn'); 
+    buttonLike.removeEventListener('click',cardLike); 
+
+    const buttonTrash = removeCard.querySelector('.card__trash');
     buttonTrash.removeEventListener('click',cardDelete);
 
-    const imageView = evt.target.closest('.card').querySelector('.card__image');
+    const imageView = removeCard.querySelector('.card__image');
     imageView.removeEventListener('click',openImage);
 
     //deleting card
-    evt.target.closest('.card').remove();
+    removeCard.remove();
  
 }
 
 
 function createCard(name, link) {
     //cloning template content;
+    
     const cardElement = cardsTemplate.cloneNode(true);
-    cardElement.querySelector('.card__image').src = link;
+    const cardImage = cardElement.querySelector('.card__image');
+    cardImage.src = link;
     cardElement.querySelector('.card__title').textContent = name;
-    cardElement.querySelector('.card__image').alt = name;
+    cardImage.alt = name;
     
     // Like and Delete buttons
     const buttonLike = cardElement.querySelector('.card__like-btn');
     const buttonTrash = cardElement.querySelector('.card__trash');
-    const imageView = cardElement.querySelector('.card__image');
+    const imageView = cardImage;
     
     // eventListeners for buttons
     buttonLike.addEventListener('click', cardLike);
