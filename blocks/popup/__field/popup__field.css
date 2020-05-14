@@ -10,10 +10,11 @@
     border-bottom: 1px solid rgba(0,0,0,.2);
     padding-bottom: 13px;
 }
-
+/*
 .popup__field:invalid{
     border-bottom: 1px solid red;
 }
+*/
 
 
 @media (max-width: 500px){
