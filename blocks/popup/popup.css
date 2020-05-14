@@ -7,6 +7,10 @@
 @import url(./__image/popup__image.css);
 @import url(./__caption/popup__caption.css);
 @import url(./__close/popup__close.css);
+@import url(./__save-btn/_disabled/popup__save-btn_disabled.css);
+@import url(./__field/_error/popup__field_error.css);
+@import url(./__span-error/popup__span-error.css);
+@import url(./__span-error/_active/popup__span-error_active.css);
 
 
 
@@ -23,10 +27,8 @@
     right: 0;
 	-webkit-box-pack: center;
 	    -ms-flex-pack: center;
-	        justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+	justify-content: center;
+    align-items: center;
     opacity: 0;
     visibility: hidden;
     -webkit-transition: opacity 0.6s, visibility 0s linear 0.3s;
