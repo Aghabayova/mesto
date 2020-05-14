@@ -31,16 +31,18 @@ const inputName = document.querySelector('.popup__field_name');
 const inputJob = document.querySelector('.popup__field_job');
 const profileEditBtn = document.querySelector('.profile__edit-button');
 const popupClose = document.querySelector('#popup-close-edit');
-const formElement = document.querySelector('#edit-popup-form');
+//const formElement = document.querySelector('#edit-popup-form');
 const addBtn = document.querySelector('.add-button');
 const popupCloseNewItem = document.querySelector('#popup-close-new-item');
 const cardsSection =document.querySelector('.cards'); 
 const newCard = document.querySelector('.popup__field_card');
 const newCardLink = document.querySelector('.popup__field_link');
-const formNewElement = document.querySelector('#new-item-form');
+//const formNewElement = document.querySelector('#new-item-form');
 const viewCardClose = document.querySelector('#close-view');
 const imageValue = document.querySelector('.popup__image');
 const imageNameValue = document.querySelector('.popup__caption');
+const formEdit = document.forms.edit;
+const formNew = document.forms.new;
 
 //выбираем необходимые попапы по ID
 const editPopup = document.querySelector('#edit-popup');
@@ -64,6 +66,7 @@ function openClosePopup(elem) {
     elem.classList.toggle('popup_opened');
 }
 
+
 //функция просмотра карточек 
 function openImage (evt) {
     imageValue.src = evt.target.src;
@@ -76,6 +79,7 @@ function openImage (evt) {
 function cardLike (evt){
     evt.target.classList.toggle('card__like-btn_active');  
 }
+
 //card Delete function
 function cardDelete (evt){
     //before deleting card removing eventListeners for like btn, delete btn and image viewing 
@@ -120,8 +124,6 @@ function createCard(name, link) {
 } 
 
 
-
-
     //функция добавления карточек из массива
 function addCards (initialCards) {
     initialCards.forEach(function (item){
@@ -152,8 +154,9 @@ function formSubmitCard (evt){
     cardsSection.prepend(createCard(newCard.value, newCardLink.value));
     newCard.value = ''; //обнуляем
     newCardLink.value = ''; //значения форм
-
+    //form.reset(); //обнуляем //значения форм
     openClosePopup(newItemPopup);
+    
 }
 
 
@@ -171,13 +174,14 @@ popupCloseNewItem.addEventListener('click',() =>
   
 viewCardClose.addEventListener('click', () => 
     openClosePopup(viewImage)); // закрываем попап просмотра
+   
 
 
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-formElement.addEventListener('submit', formSubmitHandler);
+formEdit.addEventListener('submit', formSubmitHandler);
 
-formNewElement.addEventListener('submit', formSubmitCard);
+formNew.addEventListener('submit', formSubmitCard);
 addCards (initialCards);
 
