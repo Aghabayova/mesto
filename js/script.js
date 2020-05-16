@@ -85,7 +85,7 @@ function openClosePopup(elem) {
         resetValue();
     }
     if (!elem.classList.contains('popup_opened')) {
-        //добавляем слушатель на кнопку escape
+        //удаляем слушатель с кнопки escape
         document.removeEventListener('keydown', function (evt) {
             if (evt.keyCode === 27) {
                 resetValue();
