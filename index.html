@@ -47,7 +47,7 @@
                     
                     <form class="popup__form" name="edit">
                         <h3 class="popup__heading">Редактировать профиль</h3>
-                        <input class="popup__field popup__field_name" id="name-field" placeholder="Имя" type="text" name="name" reguired minlength="2" maxlength="40"/>
+                        <input class="popup__field popup__field_name" id="name-field" placeholder="Имя" type="text" name="name" pattern="[A-Za-zА-Яа-яЁё -]*" reguired minlength="2" maxlength="40"/>
                         <span class="popup__span-error" id="name-field-error"></span>
                         <input class="popup__field popup__field_job" id="job-field" placeholder="О себе" type="text" name="job" reguired minlength="2" maxlength="200"/>
                         <span class="popup__span-error" id="job-field-error"></span>
