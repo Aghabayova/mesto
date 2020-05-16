@@ -43,25 +43,6 @@ const checkInputValidity = (form, formInput, formObject) => {
   }
 };
 
-//функция установки слушателей
-const setEventListeners = (form, formObject) => {
-   // Найдем все поля формы и сделаем из них массив методом Array.from
-  const inputList = Array.from(form.querySelectorAll(formObject.inputSelector));
-   // Найдем в текущей форме кнопку отправки
-  const buttonElement = form.querySelector(formObject.submitButtonSelector);
-  // Обойдем все элементы полученной коллекции
-  inputList.forEach((formInput) => {
-     // каждому полю добавим обработчик события input
-    formInput.addEventListener('input', function () {
-      // Вызовем toggleButtonState и передадим ей массив полей, кнопку и объект
-      toggleButtonState(inputList, buttonElement, formObject);
-      // Внутри колбэка вызовем checkInputValidity,
-      // передав ей форму, проверяемый элемент и объект
-      checkInputValidity(form, formInput, formObject);
-    });
-  });
-};
-
 
 // Функция принимает массив полей
 const hasInvalidInput = (inputList) => {
@@ -90,6 +71,24 @@ const toggleButtonState = (inputList, buttonElement, formObject) => {
   }
 };
 
+//функция установки слушателей
+const setEventListeners = (form, formObject) => {
+  // Найдем все поля формы и сделаем из них массив методом Array.from
+ const inputList = Array.from(form.querySelectorAll(formObject.inputSelector));
+  // Найдем в текущей форме кнопку отправки
+ const buttonElement = form.querySelector(formObject.submitButtonSelector);
+ // Обойдем все элементы полученной коллекции
+ inputList.forEach((formInput) => {
+    // каждому полю добавим обработчик события input
+   formInput.addEventListener('input', function () {
+     // Вызовем toggleButtonState и передадим ей массив полей, кнопку и объект
+     toggleButtonState(inputList, buttonElement, formObject);
+     // Внутри колбэка вызовем checkInputValidity,
+     // передав ей форму, проверяемый элемент и объект
+     checkInputValidity(form, formInput, formObject);
+   });
+ });
+};
 
 //функция валидации
 const enableValidation = (formObject) => {
