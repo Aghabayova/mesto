@@ -76,16 +76,18 @@ function resetValue() {//очищаем инпуты в форме карточ�
 // функция закрытия/открытия - можно переиспользовать для разных попапов
 function openClosePopup(elem) {
 
-    //Если данный попап editPopup добовляем input дефаулт значения
+    //Если данный попап editPopup добавляем дефаулт значения в поля ввода
     if ((elem === editPopup) && (!elem.classList.contains('popup_opened'))) {
         inputName.value = name.textContent;
         inputJob.value = job.textContent;
     }
+    //Если данный попап newItemPopup очищаем поля при закрытии
     if ((elem === newItemPopup) && (!elem.classList.contains('popup_opened'))) {
         resetValue();
     }
+    //если попап не содержит класс popup_opened
     if (!elem.classList.contains('popup_opened')) {
-        //удаляем слушатель с кнопки escape
+        //удаляем слушатель с кнопки escape при закрытии формы
         document.removeEventListener('keydown', function (evt) {
             if (evt.keyCode === 27) {
                 resetValue();
