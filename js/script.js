@@ -58,7 +58,10 @@ const spanError = Array.from(document.querySelectorAll('.popup__span-error'));
 //calling template for cards
 const cardsTemplate = document.querySelector('#cards-template').content;
 
+
+
 function clearError(elem) {
+    console.log(elem);
     formInput.forEach((input) => {
         input.classList.remove('popup__field_error');
     })
@@ -67,36 +70,61 @@ function clearError(elem) {
         span.textContent = '';
 
     });
+   
 };
-function resetValue() {//очищаем инпуты в форме карточек
+function resetNewCardForm() {//очищаем инпуты в форме карточек
     newCard.value = ''; //обнуляем
     newCardLink.value = ''; //значения форм
 };
+//функция по нажатию на кнопку Escape
+function handleEscapeKey(elem){
+    document.addEventListener('keydown', function(evt){
+        if (evt.key === 'Escape') {
+            openClosePopup(elem);
+        }
+    });
+}
+
+//добавляем слушатель на клик по оверлею
+function overlayClick (elem){
+    document.addEventListener('click', (evt) => {
+        if (evt.target.classList.contains('popup')) {
+            resetNewCardForm();
+            openClosePopup(elem);
+        }
+    });
+}
+
 
 // функция закрытия/открытия - можно переиспользовать для разных попапов
 function openClosePopup(elem) {
+   //проверяем открыт ли попап
+    const isOpenPopup = elem.classList.contains('popup_opened');
 
-    //Если данный попап editPopup добавляем дефаулт значения в поля ввода
-    if ((elem === editPopup) && (!elem.classList.contains('popup_opened'))) {
+    //Если данный попап editPopup добавляем input дефаулт значения и обнуляем ошибки
+    if ((elem === editPopup) && (!isOpenPopup)) {
         inputName.value = name.textContent;
         inputJob.value = job.textContent;
+        clearError(editPopup);
     }
-    //Если данный попап newItemPopup очищаем поля при закрытии
-    if ((elem === newItemPopup) && (!elem.classList.contains('popup_opened'))) {
-        resetValue();
+    //Если данный попап newItemPopup обнуляем значения и ошибки
+    if ((elem === newItemPopup) && (!isOpenPopup)) {
+        resetNewCardForm();
+        clearError(newItemPopup);
     }
-    //если попап не содержит класс popup_opened
-    if (!elem.classList.contains('popup_opened')) {
-        //удаляем слушатель с кнопки escape при закрытии формы
-        document.removeEventListener('keydown', function (evt) {
-            if (evt.keyCode === 27) {
-                resetValue();
-                elem.classList.remove('popup_opened');
-            }
-        });
+
+    //Если попап открыт срабатывают функции добавления слушателей 
+    //на кнопку Escape и на клик по оверлею
+    if(isOpenPopup) {
+        overlayClick(elem);
+        handleEscapeKey(elem);
+    }//при закрытии попапа удаляем слушатель
+    else {
+        elem.removeEventListener('keydown', handleEscapeKey(elem));
     }
+    
     elem.classList.toggle('popup_opened');
-    clearError(elem);
+    
 }
 
 
@@ -171,10 +199,8 @@ function addCards(initialCards) {
 function formSubmitHandler(evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
 
-    if ((inputName.value !== '') && (inputJob.value !== '')) {
         name.textContent = inputName.value;
         job.textContent = inputJob.value;
-    }
 
     openClosePopup(editPopup);
 }
@@ -186,6 +212,10 @@ function formSubmitCard(evt) {
     //adding new image to the beginning of array
     cardsSection.prepend(createCard(newCard.value, newCardLink.value));
     openClosePopup(newItemPopup);
+    
+    const buttonElement = newItemPopup.querySelector('.popup__save-btn');
+    buttonElement.classList.add('popup__save-btn_disabled');
+    buttonElement.setAttribute('disabled', 'true');
 
 }
 
@@ -204,22 +234,6 @@ popupCloseNewItem.addEventListener('click', () =>
 
 viewCardClose.addEventListener('click', () =>
     openClosePopup(viewImage)); // закрываем попап просмотра
-
-
-//добавляем слушатель на кнопку escape
-document.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === 27) {
-        resetValue();
-        document.querySelector('.popup_opened').classList.remove('popup_opened');
-    }
-});
-//добавляем слушатель на кнопку escape
-document.addEventListener('click', (evt) => {
-    if (evt.target.classList.contains('popup')) {
-        resetValue();
-        document.querySelector('.popup_opened').classList.remove('popup_opened');
-    }
-});
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
