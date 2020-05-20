@@ -89,8 +89,8 @@ function handleEscapeKey(elem){
 function overlayClick (elem){
     document.addEventListener('click', (evt) => {
         if (evt.target.classList.contains('popup')) {
-            resetNewCardForm();
             openClosePopup(elem);
+            resetNewCardForm();
         }
     });
 }
@@ -198,7 +198,6 @@ function addCards(initialCards) {
 // она никуда отправляться не будет
 function formSubmitHandler(evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-
         name.textContent = inputName.value;
         job.textContent = inputJob.value;
 
@@ -216,7 +215,6 @@ function formSubmitCard(evt) {
     const buttonElement = newItemPopup.querySelector('.popup__save-btn');
     buttonElement.classList.add('popup__save-btn_disabled');
     buttonElement.setAttribute('disabled', 'true');
-
 }
 
 
