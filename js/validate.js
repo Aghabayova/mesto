@@ -18,7 +18,6 @@ const showError = (form, formInput, errorMessage, formObject) => {
   //подставляем текст с ошибкой параметром errorMessage
   errorElement.textContent = errorMessage;
   errorElement.classList.add(formObject.errorClass);
-  console.log(formInput);
 };
 
 
@@ -28,7 +27,6 @@ const hideError = (form, formInput, formObject) => {
   formInput.classList.remove(formObject.inputErrorClass);
   errorElement.classList.remove(formObject.errorClass);
   errorElement.textContent = '';
-  console.log(formInput);
 };
 
 
@@ -59,6 +57,7 @@ const hasInvalidInput = (inputList) => {
 // Функция принимает массив полей ввода
 // и элемент кнопки, состояние которой нужно менять
 const toggleButtonState = (inputList, buttonElement, formObject) => {
+  
     // Если есть хотя бы один невалидный инпут
   if (hasInvalidInput(inputList)) {
       // сделай кнопку неактивной
