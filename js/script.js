@@ -77,22 +77,21 @@ function resetNewCardForm() {//очищаем инпуты в форме кар�
     newCardLink.value = ''; //значения форм
 };
 //функция по нажатию на кнопку Escape
-function handleEscapeKey(elem){
-    document.addEventListener('keydown', function(evt){
-        if (evt.key === 'Escape') {
-            openClosePopup(elem);
-        }
-    });
-}
+function handleEscapeKey(evt){
+    const popupOpen = document.querySelector('.popup_opened');
+    if (evt.key === 'Escape') {
+        openClosePopup(popupOpen);
+        resetNewCardForm();
+    };
+};
 
 //добавляем слушатель на клик по оверлею
-function overlayClick (elem){
-    document.addEventListener('click', (evt) => {
-        if (evt.target.classList.contains('popup')) {
-            openClosePopup(elem);
-            resetNewCardForm();
-        }
-    });
+function overlayClick (evt){
+    const popupOpen = document.querySelector('.popup_opened');
+    if (evt.target.classList.contains('popup')) {
+    openClosePopup(popupOpen);
+    resetNewCardForm();
+    }
 }
 
 
@@ -115,12 +114,14 @@ function openClosePopup(elem) {
 
     //Если попап открыт срабатывают функции добавления слушателей 
     //на кнопку Escape и на клик по оверлею
-    if(isOpenPopup) {
-        overlayClick(elem);
-        handleEscapeKey(elem);
+
+    if(!isOpenPopup) {
+        document.addEventListener('keydown', handleEscapeKey);
+        document.addEventListener('click', overlayClick);
     }//при закрытии попапа удаляем слушатель
     else {
-        elem.removeEventListener('keydown', handleEscapeKey(elem));
+        document.removeEventListener('keydown', handleEscapeKey);
+        document.removeEventListener('click', overlayClick);
     }
     
     elem.classList.toggle('popup_opened');
