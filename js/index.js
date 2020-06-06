@@ -1,5 +1,5 @@
-import {Card} from './card.js';
-import FormValidator from './validate.js';
+import { Card } from './card.js';
+import FormValidator from './FormValidator.js';
 
 
 const initialCards = [ //массив карточек
@@ -60,7 +60,6 @@ const formInput = Array.from(document.querySelectorAll('.popup__field'));
 const spanError = Array.from(document.querySelectorAll('.popup__span-error'));
 
 function clearError(elem) {
-    console.log(elem);
     formInput.forEach((input) => {
         input.classList.remove('popup__field_error');
     })
@@ -68,20 +67,20 @@ function clearError(elem) {
         span.classList.remove('popup__error_active');
         span.textContent = '';
     });
-};
+}
 
 function resetNewCardForm() { //очищаем инпуты в форме карточек
     newCard.value = ''; //обнуляем
     newCardLink.value = ''; //значения форм
-};
+}
 //функция по нажатию на кнопку Escape
 function handleEscapeKey(evt) {
     const popupOpen = document.querySelector('.popup_opened');
     if (evt.key === 'Escape') {
         openClosePopup(popupOpen);
         resetNewCardForm();
-    };
-};
+    }
+}
 
 //добавляем слушатель на клик по оверлею
 function overlayClick(evt) {
@@ -127,14 +126,14 @@ export function openClosePopup(elem) {
 }
 
 //функция добавления карточек из массива
-function addCards(initialCards){
-initialCards.forEach((item) => {
-    const card = new Card(item, '#cards-template');
-    const cardElement = card.generateCard();
+function addCards(initialCards) {
+    initialCards.forEach((item) => {
+        const card = new Card(item, '#cards-template');
+        const cardElement = card.generateCard();
 
-    //добавлыаем в DOM
-    document.querySelector('.cards').append(cardElement);
-});
+        //добавлыаем в DOM
+        document.querySelector('.cards').append(cardElement);
+    });
 }
 
 
@@ -154,7 +153,7 @@ function formSubmitCard(evt) {
     const newItem = {};
     newItem.link = newCardLink.value;
     newItem.name = newCard.value;
-    const card = new Card (newItem, '#cards-template')
+    const card = new Card(newItem, '#cards-template')
     //adding new image to the beginning of array
     cardsSection.prepend(card.generateCard());
     openClosePopup(newItemPopup);
@@ -165,23 +164,23 @@ function formSubmitCard(evt) {
 }
 
 //функция валидации
-function formValidation () {
+function formValidation() {
     // Найдем все формы и сделаем из них массив методом Array.from
     const formList = Array.from(document.querySelectorAll('.popup__form'));
     //Обойдем весь полученный массив и передаем ему обработчик с параметром form
     formList.forEach((form) => {
-      //array of objects
-    const validationObject = new FormValidator({
-        inputSelector: '.popup__field',
-        submitButtonSelector: '.popup__save-btn',
-        inactiveButtonClass: 'popup__save-btn_disabled',
-        inputErrorClass: 'popup__field_error',
-        errorClass: 'popup__span-error_active'
-    }, form);
-    validationObject.enableValidation();
+        //array of objects
+        const validationObject = new FormValidator({
+            inputSelector: '.popup__field',
+            submitButtonSelector: '.popup__save-btn',
+            inactiveButtonClass: 'popup__save-btn_disabled',
+            inputErrorClass: 'popup__field_error',
+            errorClass: 'popup__span-error_active'
+        }, form);
+        validationObject.enableValidation();
     });
-  }
-  
+}
+
 profileEditBtn.addEventListener('click', () =>
     openClosePopup(editPopup)); // открываем попап редактирования
 

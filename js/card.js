@@ -1,4 +1,4 @@
-import {viewImage, openClosePopup, imageValue, imageNameValue} from './script.js';
+import {viewImage, openClosePopup, imageValue, imageNameValue} from './index.js';
 
 export class Card {
     constructor(data, cardSelector) { //конструктор получает объект и селектор шаблона
