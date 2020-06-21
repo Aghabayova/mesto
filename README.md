@@ -49,3 +49,26 @@
 * [Ссылка на макет 3 в Figma](https://www.figma.com/file/XNaGNEZD5NEjeyJzAT4gMb/JavaScript.-Sprint-6)
 
 * [Ссылка на готовый проект](https://aghabayova.github.io/mesto/)
+
+
+* Для установки, запустите клонирование репозитория:
+```
+git clone https://github.com/Aghabayova/mesto.git
+```
+
+* В терминале запускаем NPM
+```
+npm install
+```
+
+* После успешной установки станут доступны команды 
+
+** Поднимаем локальный сервер
+```
+npm run dev
+```
+
+** Сборку для продакшен
+```
+npm run buid
+```
