@@ -48,7 +48,6 @@
 * [Ссылка на макет 2 в Figma](https://www.figma.com/file/nlYpT4VhFiwimn2YlncrcF/JavaScript.-Sprint-5?node-id=0%3A1)
 * [Ссылка на макет 3 в Figma](https://www.figma.com/file/XNaGNEZD5NEjeyJzAT4gMb/JavaScript.-Sprint-6)
 
-* [Ссылка на готовый проект](https://aghabayova.github.io/mesto/)
 
 
 1. Для установки, запустите клонирование репозитория:
