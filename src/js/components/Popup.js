@@ -1,5 +1,3 @@
-import {itemPopup, formSelectors } from '../utils/constants.js';
-
 export default class Popup {
     constructor(popupSelector) {
         this._popupSelector = popupSelector;
@@ -8,12 +6,12 @@ export default class Popup {
     }
   
     open() {
-        this._popup.classList.add(itemPopup.popupOpened);
+        this._popup.classList.add('popup_opened');
         this._setEventListeners();
     }
   
     close() {
-        this._popup.classList.remove(itemPopup.popupOpened);
+        this._popup.classList.remove('popup_opened');
         document.removeEventListener('keyup', this._escCloseHandler);
     }
   
@@ -25,7 +23,7 @@ export default class Popup {
   
     _setEventListeners() {
         this._popup.addEventListener('click', (evt) => {
-            if (evt.target.matches(itemPopup.popupClose) || evt.target.matches(itemPopup.popupSection)) {
+            if (evt.target.matches('.popup__close') || evt.target.matches('.popup')) {
                 this.close();
             }
         });

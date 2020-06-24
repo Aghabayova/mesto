@@ -63,16 +63,6 @@ export const itemCard = {
     cardTrash: '.card__trash'
 };
 
-//Массив Структуры Popup
-export const itemPopup = {
-    popupForm: '.popup__form',
-    popupSection: '.popup',
-    popupOpened: 'popup_opened',
-    popupClose: '.popup__close',
-    popupImage: '.popup__image',
-    popupImageCaption: '.popup__caption'
-};
-
 //Массив Форм
 export const formSelectors = {
     popupContent: '.popup__form',

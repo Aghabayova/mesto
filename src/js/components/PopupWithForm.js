@@ -1,36 +1,28 @@
 import Popup from './Popup.js';
-import { formSelectors } from '../utils/constants.js';
 export default class PopupWithForm extends Popup {
-    constructor(popupSelector, { handleFormSubmit, setInputValues }) {
+    constructor(popupSelector, { handleFormSubmit }) {
         super(popupSelector);
         this._handleFormSubmit = handleFormSubmit;
-        this._setInputValues = setInputValues;
-        this._formElement = this._popup.querySelector( formSelectors.popupContent );
-        this._inputList = this._formElement.querySelectorAll( formSelectors.inputSelector);
+        this._formElement = this._popup.querySelector( '.popup__form' );
+        this._inputList = this._formElement.querySelectorAll( '.popup__field');
     }
 
     open() {
         super.open();
-        this._setInputValues();
-        //this._setInitialButtonState(isDisabled);
-        this._setDefaultErrorState();
+        //this._setDefaultErrorState();
     }
-
-    _setInitialButtonState(isDisabled) {
-        const buttonSubmit = this._formElement.querySelector( formSelectors.submitButtonSelector);
-        buttonSubmit.disabled = isDisabled;
-    }
-
+    /*
     _setDefaultErrorState() {
         this._inputList.forEach((inputElement) => {
-            if (inputElement.matches( formSelectors.inputErrorField )) {
+            if (inputElement.matches( '.popup__field_error' )) {
                 const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
-                inputElement.classList.remove( formSelectors.inputErrorClass);
-                errorElement.classList.remove( formSelectors.spanErrorClassActive );
+                inputElement.classList.remove( 'popup__field_error' );
+                errorElement.classList.remove( 'popup__span-error_active' );
                 errorElement.textContent = '';
             }
         });
     }
+    */
 
     _setEventListeners() {
         super._setEventListeners();

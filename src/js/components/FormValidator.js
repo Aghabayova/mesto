@@ -5,6 +5,7 @@ export default class FormValidator {
     this._submitButtonSelector = data.submitButtonSelector;
     this._inputErrorClass = data.inputErrorClass;
     this._errorClass = data.errorClass;
+    this._inputList = this._formElement.querySelectorAll( '.popup__field');
   }
 
   // Функция, которая добавляет класс с ошибкой
@@ -93,9 +94,23 @@ export default class FormValidator {
     });
   }
 
+  _setDefaultErrorState() {
+    this._inputList.forEach((inputElement) => {
+        if (inputElement.matches( '.popup__field_error' )) {
+            const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
+            inputElement.classList.remove( 'popup__field_error' );
+            errorElement.classList.remove( 'popup__span-error_active' );
+            errorElement.textContent = '';
+        }
+    });
+}
+
 
   //Объявить функицю валидации
   enableValidation() {
+
+    this._setDefaultErrorState();
+
     this._formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
     });

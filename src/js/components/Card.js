@@ -1,7 +1,6 @@
-import {itemCard } from '../utils/constants.js';
 
 export default class Card {
-    constructor(data, { cardSelector, handleCardClick }) {//конструктор получает объект, селектор шаблона и управление кликом по карточке
+    constructor(data, {cardSelector, handleCardClick }) {//конструктор получает объект, селектор шаблона и управление кликом по карточке
       this._cardSelector = cardSelector;
       this._name = data.name;
       this._link = data.link;
@@ -10,7 +9,7 @@ export default class Card {
   
     //Клонируем card из шаблона
     _getCardTemplate() {
-      const cardElement = document.querySelector(this._cardSelector).content.querySelector(itemCard.cardSection).cloneNode(true);
+      const cardElement = document.querySelector(this._cardSelector).content.querySelector('.card').cloneNode(true);
       this._cardItem = cardElement;
       return cardElement;
     }
@@ -21,11 +20,11 @@ export default class Card {
       // Так у других элементов появится доступ к ней.
       this._cardItem = this._getCardTemplate();
       this._setEventListeners();
-      const cardPhoto = this._cardItem.querySelector(itemCard.cardImage);
+      const cardPhoto = this._cardItem.querySelector('.card__image');
 
       // Добавим данные
       cardPhoto.src = this._link;
-      this._cardItem.querySelector(itemCard.cardTitle).textContent = this._name;
+      this._cardItem.querySelector('.card__title').textContent = this._name;
       cardPhoto.alt = this._name;
 
       // Вернём элемент наружу
@@ -34,40 +33,30 @@ export default class Card {
   
     //Ставим слушатели событий
     _setEventListeners() {
-        this._cardItem.querySelector(itemCard.cardLikeBtn).addEventListener('click', () => {
-            this._handleCardLike();
+        this._cardItem.querySelector('.card__like-btn').addEventListener('click', (evt) => {
+            this._handleCardLike(evt);
         });
         
-        this._cardItem.querySelector(itemCard.cardTrash).addEventListener('click', (evt) => {
+        this._cardItem.querySelector('.card__trash').addEventListener('click', (evt) => {
             this._handleCardDelete(evt);
         });
       
-        this._cardItem.querySelector(itemCard.cardImage).addEventListener('click', (evt) => {
+        this._cardItem.querySelector('.card__image').addEventListener('click', (evt) => {
             this._handleCardClick(evt);
         });
     }
   
     //управление Кнопкой Лайк
     _handleCardLike() {
-        this._cardItem.querySelector(itemCard.cardLikeBtn).classList.toggle(itemCard.cardLikeBtnActive);
+        this._cardItem.querySelector('.card__like-btn').classList.toggle('card__like-btn_active');
     }
   
     //управление удаления карточки
     _handleCardDelete(evt) {
-        const cardToDelete = evt.target.closest(itemCard.cardSection);
-        this._cardItem.querySelector(itemCard.cardLikeBtn).removeEventListener('click', () => {
-            this._handleCardLike();
-        });
-        
-        this._cardItem.querySelector(itemCard.cardTrash).removeEventListener('click', (evt) => {
-            this._handleCardDelete(evt);
-        });
-      
-        this._cardItem.querySelector(itemCard.cardImage).removeEventListener('click', (evt) => {
-            this._handleCardClick(evt);
-        });
-        
+        const cardToDelete = evt.target.closest('.card');
         cardToDelete.remove();
+        this._cardItem = null;
+        
     }
 }
   
