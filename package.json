@@ -4,7 +4,7 @@
   "description": "Learning project 8",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "rm -rf dist && webpack",
     "dev": "webpack-dev-server --open --watch"
   },
   "repository": {
