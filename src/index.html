@@ -43,7 +43,7 @@
                 <div class="popup__content" id="edit-popup-form">
                     <button class="popup__close" id="popup-close-edit" type="button">+</button>
                     
-                    <form class="popup__form" name="edit">
+                    <form class="popup__form popup__edit_profile" name="edit">
                         <h3 class="popup__heading">Редактировать профиль</h3>
                         <input class="popup__field popup__field_name" id="name-field" placeholder="Имя" type="text" name="name" required pattern="[A-Za-zА-Яа-яЁё -]*" minlength="2" maxlength="40"/>
                         <span class="popup__span-error" id="name-field-error"></span>
@@ -56,7 +56,7 @@
             <section class="popup" id="new-item-popup">
                 <div class="popup__content" id="new-item-form">
                     <button class="popup__close" id="popup-close-new-item" type="button">+</button>
-                    <form class="popup__form" name="new">
+                    <form class="popup__form popup__new_card" name="new">
                         <h3 class="popup__heading">Новое место</h3>
                         <input class="popup__field popup__field_card" id="title-input" placeholder="Название" type="text" name="name" required minlength="1" maxlength="30"/>
                         <span class="popup__span-error" id="title-input-error"></span>

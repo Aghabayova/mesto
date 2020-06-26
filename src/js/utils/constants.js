@@ -29,6 +29,7 @@ export const initialCards = [
 
 //Массив Профиля
 export const formProfile = {
+    popupEditProfile: '.popup__edit_profile',
     profileName: '.profile__name',
     profileDescription: '.profile__description',
     profileInputName: '.popup__field_name',
@@ -40,6 +41,7 @@ export const formProfile = {
 
 //Массив Карточек
 export const formCard = {
+    popupNewCard: '.popup__new_card',
     cardAddBtn: '.add-button',
     cartdloseNew: '#popup-close-new-item',
     cardSection: '.cards',
@@ -68,6 +70,7 @@ export const formSelectors = {
     popupContent: '.popup__form',
     inputSelector: '.popup__field',
     submitButtonSelector: '.popup__save-btn',
+    submitButtonDisabled: '.popup__save-btn_disabled',
     inputErrorClass: 'popup__field_error',
     inputErrorField: '.popup__field_error',
     spanErrorClassId: '.popup__span-error',

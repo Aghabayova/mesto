@@ -15,7 +15,12 @@ import {
     allForms
 } from '../js/utils/constants.js';
 
+//Функция валидации форм
+const popupProfileValidation = new FormValidator(formProfile.popupEditProfile, formSelectors);
+popupProfileValidation.enableValidation();
 
+const popupImgValidation = new FormValidator(formCard.popupNewCard, formSelectors);
+popupImgValidation.enableValidation();
 
 //Создаем Section для карточек
 const cardList = new Section({
@@ -59,7 +64,7 @@ const popupWithImageForm = new PopupWithForm(formCard.cardNewItem, {
 
 //Функция Открытия Добaвления новой карточки
 const openNewCard = function (formElement) {
-    formValidation();
+    popupImgValidation.errorDefaultState();
     popupWithImageForm.open(); 
 }
 
@@ -83,7 +88,7 @@ const openUserForm = function (formElement) {
     formElement.querySelector(formProfile.profileInputName).value = userInfo.getUserInfo().name;
     formElement.querySelector(formProfile.profileInputJob).value = userInfo.getUserInfo().job;
     //При открытии попапа делаем валидацию всех инпутов и сбрасываем еrror state
-    formValidation();
+    popupProfileValidation.errorDefaultState();
     popupWithUserForm.open();
 }
 
@@ -103,14 +108,3 @@ document.querySelector(formProfile.profileEditBtn).addEventListener('click', () 
 //Генерация карточек из масива
 cardList.renderItems();
 
-//Функция валидации форм
-function formValidation(){
-    //Валидировать все формы
-    allForms.forEach((formItem) => {
-        const validator = new FormValidator(formSelectors, formItem);
-        validator.enableValidation();
-    });
-}
-
-//Запускаем первоначальную валидацию
-formValidation();
