@@ -1,10 +1,24 @@
 
 export default class Card {
-    constructor(data, { cardSelector, handleCardClick }) {//конструктор получает объект, селектор шаблона и управление кликом по карточке
+    constructor(data, { cardSelector, handleCardClick, handleCardLike, handleCardDelete }, userID) {//конструктор получает объект, селектор шаблона и управление кликом по карточке
         this._cardSelector = cardSelector;
         this._name = data.name;
         this._link = data.link;
+        this._author = data.owner;
+        this._likes = data.likes;
+        this._id = data._id;
+        this._userId = userID;
+        this._owner = data.owner._id;
         this._handleCardClick = handleCardClick;
+        this._handleCardLike = handleCardLike;
+        this._handleCardDelete = handleCardDelete;
+        this._clickLike = () => {
+            this._handleCardLike({
+                id: this._id,
+                like: this._cardItem.querySelector('.card__like-btn').classList.contains('card__like-btn_active'),
+                likeSum: this._cardItem.querySelector('.card__like-counter')
+            });
+        };
     }
 
     //Клонируем card из шаблона
@@ -22,6 +36,25 @@ export default class Card {
         this._setEventListeners();
         const cardPhoto = this._cardItem.querySelector('.card__image');
 
+        if (this._author._id!==this._userId) {
+            this._cardItem.querySelector('.card__trash').style.display = 'none';
+        }
+
+        this._cardItem.querySelector('.card__like-counter').textContent = `${this._likes.length}`;
+        if (this._likes.find((like) => like._userId === this._userId)){
+            this._cardItem.querySelector('.card__like-btn').classList.toggle('card__like-btn_active');
+        }
+
+        //Активируем фунцию проверки лайков
+        this._likeCardOwner(this._id);
+<<<<<<< Updated upstream
+        //убираем со страницы нулевые лайки
+        if (this._likes.length === 0) {
+            this._cardItem.querySelector('.card__like-counter').style.display = 'none';
+        };
+=======
+>>>>>>> Stashed changes
+
         // Добавим данные
         cardPhoto.src = this._link;
         this._cardItem.querySelector('.card__title').textContent = this._name;
@@ -31,31 +64,92 @@ export default class Card {
         return this._cardItem;
     }
 
+    //Функция Автора карточки
+    _likeCardOwner(_id) {
+        if (this._likes.some((user) =>
+            (user._id === this._userId))) {
+                this._cardItem.querySelector('.card__like-btn').classList.add('card__like-btn_active');
+            }
+    }
+
+    //Ставим Лайк
+    cardLike(sum) { //функция лайков
+        this._cardItem.querySelector(".card__like-btn").classList.toggle("card__like-btn_active");
+        if (sum === 0) {
+            this._cardItem.querySelector('.card__like-counter').style.display = 'none';
+        } else {
+          this._cardItem.querySelector('.card__like-counter').style.display = 'block';
+          this._cardItem.querySelector('.card__like-counter').textContent = sum;
+        }
+    }
+    
+    
+    cardDelete() {
+        this._cardItem.remove();
+        this._cardItem = null;
+    }
+    
+
     //Ставим слушатели событий
     _setEventListeners() {
+<<<<<<< Updated upstream
+     
+        this._cardItem.querySelector(".card__like-btn").addEventListener("click", () => {
+            this._clickLike();
+=======
+        /*
         this._cardItem.querySelector('.card__like-btn').addEventListener('click', (evt) => {
             this._handleCardLike(evt);
+>>>>>>> Stashed changes
+        });
+        */
+
+        this._cardItem.querySelector(".card__like-btn").addEventListener("click", () => {
+            this._clickLike();
         });
 
+<<<<<<< Updated upstream
+      
+        this._cardItem.querySelector(".card__trash").addEventListener("click", () => {
+            this._handleCardDelete();
+=======
+        /*
         this._cardItem.querySelector('.card__trash').addEventListener('click', (evt) => {
             this._handleCardDelete(evt);
+>>>>>>> Stashed changes
         });
+        */
+
+        this._cardItem.querySelector(".card__trash").addEventListener("click", () => {
+            this._handleCardDelete();
+        });
+
+
 
         this._cardItem.querySelector('.card__image').addEventListener('click', (evt) => {
             this._handleCardClick();
         });
     }
 
+
+
     //управление Кнопкой Лайк
-    _handleCardLike() {
+    handleCardLike(amount) {
         this._cardItem.querySelector('.card__like-btn').classList.toggle('card__like-btn_active');
+        this._cardItem.querySelector('.card__like-counter').textContent = amount;
     }
 
+<<<<<<< Updated upstream
+
+=======
     //управление удаления карточки
+    /*
     _handleCardDelete(evt) {
         const cardToDelete = evt.target.closest('.card');
         cardToDelete.remove();
         this._cardItem = null;
 
     }
+    */
+>>>>>>> Stashed changes
 }

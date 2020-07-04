@@ -14,17 +14,18 @@
      
         <main>
             <section class="profile">
-                <img class="profile__avatar" src="./images/avatar.jpg" alt="аватар">
-
+                <div class="profile__box">
+                    <img class="profile__avatar" src="#" alt="аватар">
+                    <img class="profile__pencil" src="./images/pencil.svg" alt="Редактировать">
+                </div>
                 <div class="profile__info">
                     <div>
-                        <h1 class="profile__name">Жак-Ив Кусто</h1>
-                        <p class="profile__description">Исследователь океана</p>
+                        <h1 class="profile__name" data-id=""></h1>
+                        <p class="profile__description"></p>
                     </div>
                     <button class="profile__edit-button" type="button" ></button>
                 </div>
                 <button class="add-button" type="button"></button>
-                
             </section>
             <section class="cards">
                 <template id="cards-template">
@@ -32,11 +33,36 @@
                         <img class="card__image" src="#" alt="Изображение">
                         <div class="card__description">
                             <h3 class="card__title"></h3>
-                            <button class="card__like-btn" type="button"></button>
+                            <div class="card__like">
+                                <button class="card__like-btn" type="button"></button>
+                                <span class="card__like-counter"></span>
+                            </div>
                         </div>
                         <button class="card__trash" type="button"></button>
                     </div>
                 </template>
+            </section>
+
+            <section class="popup" id="delete-popup"> 
+                <div class="popup__content" id="delete-popup-popup-form">
+                    <button class="popup__close" id="delete-close-edit" type="button">+</button>
+                    <form class="popup__form popup__delete_card" name="delete">
+                        <h3 class="popup__heading">Вы уверены?</h3>
+                        <button class="popup__save-btn" id="popup-detele-btn" type="submit">Да</button>
+                    </form>
+                </div>
+            </section>
+            
+            <section class="popup" id="edit-avatar"> 
+                <div class="popup__content" id="edit-avatar-form">
+                    <button class="popup__close" id="popup-close-avatar" type="button">+</button>
+                    <form class="popup__form popup__avatar" name="new">
+                        <h3 class="popup__heading">Обновить аватар</h3>
+                        <input class="popup__field popup__field_avatar" id="url-input" placeholder="Ссылка на картинку" type="url" name="link" required/>
+                        <span class="popup__span-error" id="url-input-error"></span> 
+                        <button class="popup__save-btn" id="popup-create-btn" type="submit">Сохранить</button>
+                    </form>
+                </div>
             </section>
             
             <section class="popup" id="edit-popup">
@@ -47,7 +73,7 @@
                         <h3 class="popup__heading">Редактировать профиль</h3>
                         <input class="popup__field popup__field_name" id="name-field" placeholder="Имя" type="text" name="name" required pattern="[A-Za-zА-Яа-яЁё -]*" minlength="2" maxlength="40"/>
                         <span class="popup__span-error" id="name-field-error"></span>
-                        <input class="popup__field popup__field_job" id="job-field" placeholder="О себе" type="text" name="job" required minlength="2" maxlength="200"/>
+                        <input class="popup__field popup__field_job" id="job-field" placeholder="О себе" type="text" name="about" required minlength="2" maxlength="200"/>
                         <span class="popup__span-error" id="job-field-error"></span>
                         <button class="popup__save-btn" id="popup-save-btn" type="submit">Сохранить</button>
                     </form>
