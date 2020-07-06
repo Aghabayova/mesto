@@ -1,6 +1,6 @@
 
 export default class Card {
-    constructor(data, { cardSelector, handleCardClick, handleCardLike, handleCardDelete }, userID) {//конструктор получает объект, селектор шаблона и управление кликом по карточке
+    constructor(data, { cardSelector, handleCardClick, handleCardLike, handleCardDelete }, userID) {//конструктор получает объект, селектор шаблона, управление кликом по карточке, лайку, кнопке удаления, а также ID пользователя. 
         this._cardSelector = cardSelector;
         this._name = data.name;
         this._link = data.link;
@@ -47,13 +47,11 @@ export default class Card {
 
         //Активируем фунцию проверки лайков
         this._likeCardOwner(this._id);
-<<<<<<< Updated upstream
-        //убираем со страницы нулевые лайки
-        if (this._likes.length === 0) {
+
+         //убираем со страницы нулевые лайки
+         if (this._likes.length === 0) {
             this._cardItem.querySelector('.card__like-counter').style.display = 'none';
         };
-=======
->>>>>>> Stashed changes
 
         // Добавим данные
         cardPhoto.src = this._link;
@@ -92,38 +90,17 @@ export default class Card {
 
     //Ставим слушатели событий
     _setEventListeners() {
-<<<<<<< Updated upstream
-     
-        this._cardItem.querySelector(".card__like-btn").addEventListener("click", () => {
-            this._clickLike();
-=======
-        /*
-        this._cardItem.querySelector('.card__like-btn').addEventListener('click', (evt) => {
-            this._handleCardLike(evt);
->>>>>>> Stashed changes
-        });
-        */
-
-        this._cardItem.querySelector(".card__like-btn").addEventListener("click", () => {
-            this._clickLike();
-        });
-
-<<<<<<< Updated upstream
       
-        this._cardItem.querySelector(".card__trash").addEventListener("click", () => {
-            this._handleCardDelete();
-=======
-        /*
-        this._cardItem.querySelector('.card__trash').addEventListener('click', (evt) => {
-            this._handleCardDelete(evt);
->>>>>>> Stashed changes
+
+        this._cardItem.querySelector(".card__like-btn").addEventListener("click", () => {
+            this._clickLike();
         });
-        */
+
+      
 
         this._cardItem.querySelector(".card__trash").addEventListener("click", () => {
             this._handleCardDelete();
         });
-
 
 
         this._cardItem.querySelector('.card__image').addEventListener('click', (evt) => {
@@ -139,17 +116,5 @@ export default class Card {
         this._cardItem.querySelector('.card__like-counter').textContent = amount;
     }
 
-<<<<<<< Updated upstream
-
-=======
-    //управление удаления карточки
-    /*
-    _handleCardDelete(evt) {
-        const cardToDelete = evt.target.closest('.card');
-        cardToDelete.remove();
-        this._cardItem = null;
-
-    }
-    */
->>>>>>> Stashed changes
+   
 }

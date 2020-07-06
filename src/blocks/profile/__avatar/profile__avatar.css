@@ -1,13 +1,6 @@
 .profile__avatar{
-<<<<<<< Updated upstream
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-=======
     height: 100%;
     width: auto;
->>>>>>> Stashed changes
 }
 
 @media (max-width: 750px){

@@ -94,22 +94,14 @@ const cardList = new Section({
 }, formCard.cardSection);
 
 
-<<<<<<< Updated upstream
-//Генерация карточек из маcсива
-=======
 //Генерация карточек из масива
->>>>>>> Stashed changes
 api.getInitialCards()
 .then((data) => {
     cardList.renderItems(data);
 })
 .catch((err) => console.log(`Ошибка, попробуйте еще: ${err}`));
 
-<<<<<<< Updated upstream
 //Фукция постановки лайков
-=======
-//Фукция Ставки Лаиков
->>>>>>> Stashed changes
 let itemsCard;
 const addLike = (data) => {
     api.addLike(data)
@@ -118,11 +110,7 @@ const addLike = (data) => {
     })
     .catch((err) => console.log(`Ошибка, попробуйте еще: ${err}`));
 };
-<<<<<<< Updated upstream
 //Фукция удаления лайков
-=======
-//Фукция Удаление Лаиков
->>>>>>> Stashed changes
 const deleteLike = (data) => {
     api.deleteLike(data)
     .then((result) => {
@@ -131,11 +119,7 @@ const deleteLike = (data) => {
     .catch((err) => console.log(`Ошибка, попробуйте еще: ${err}`));
 } 
 
-<<<<<<< Updated upstream
 //Создаем Popup подтверждения удаления
-=======
-//Создаем Поп Уп Потверждение удаления
->>>>>>> Stashed changes
 const deleteCardConfirm = new PopupWithForm(formCard.popupСonfirm, {
     handleFormSubmit: () => {
         api.deleteCard(itemsCard.object)
@@ -149,11 +133,7 @@ const deleteCardConfirm = new PopupWithForm(formCard.popupСonfirm, {
 
 
 
-<<<<<<< Updated upstream
 //Создаем Popup для просмотра карточек
-=======
-//Создаем Popup для карточек
->>>>>>> Stashed changes
 const popupWithImage = new PopupWithImage(formCard.cardImageView);
 
 //Создаем Popup для создания новой карточки
@@ -201,13 +181,13 @@ const popupWithImageForm = new PopupWithForm(formCard.cardNewItem, {
     }
 });
 
-//Функция открытия Popup добавления новой карточки
+//Функция открытия Popup для создания новой карточки
 const openNewCard = function (formElement) {
     popupImgValidation.errorDefaultState();
     popupWithImageForm.open(); 
 }
 
-//Создаем Popup для редактирование Аватара
+//Создаем Popup для редактирования Аватара
 const popupAvatarForm = new PopupWithForm(formProfile.profileAvatar, {
     handleFormSubmit: (userData) => {
         //Активируем Лоадинг
@@ -230,11 +210,7 @@ const popupAvatarForm = new PopupWithForm(formProfile.profileAvatar, {
     },
 });
 
-<<<<<<< Updated upstream
-//Функция открытия Popup изменения Аватара
-=======
-//Функция Открытия Изменения Аватара
->>>>>>> Stashed changes
+//Функция открытия Popup для изменения Аватара
 const openEditAvatar = function (formElement) {
     popupAvatarValidation.errorDefaultState();
     popupAvatarForm.open(); 
@@ -248,17 +224,13 @@ const userInfo = new UserInfo({
     userAvatarSelector: formProfile.profileAvatarImg
 });
 
-<<<<<<< Updated upstream
-//Получаем удаленные данные профиля
-=======
-//Получаем удаленыйе данные профиля
->>>>>>> Stashed changes
+//Получаем удаленыйе данные профиля с сервера
 api.getUserInfo()
     .then(userData => userInfo.setUserInfo(userData))
     .catch((err) => console.log(`Ошибка, попробуйте еще: ${err}`));
 
 
-//Открываем Popup Редактирования профиля
+//Создаем Popup для редактирования профиля
 const popupWithUserForm = new PopupWithForm(formProfile.profileEdit, {
     handleFormSubmit: (userData) => {
         showLoading(true, formProfile.profileEdit,'Сохранить', 'Сохранение...');
@@ -274,7 +246,7 @@ const popupWithUserForm = new PopupWithForm(formProfile.profileEdit, {
     },
 });
 
-//Функция Открытия редактирования профиля
+//Функция открытия редактирования профиля
 const openUserForm = function (formElement) {
     formElement.querySelector(formProfile.profileInputName).value = userInfo.getUserInfo().name;
     formElement.querySelector(formProfile.profileInputJob).value = userInfo.getUserInfo().about;
