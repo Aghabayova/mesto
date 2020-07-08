@@ -1,5 +1,5 @@
 export default class Api {
-    
+
     constructor(options) {
         this._url = options.baseUrl;
         this._headers = options.headers;
@@ -11,27 +11,27 @@ export default class Api {
             method: 'GET',
             headers: this._headers,
         })
-        .then(res => {
-            if (res.ok) {
-                return res.json();
-            } else {
-                return Promise.reject(`Что-то пошло не так: ${res.status}`);
-            }
-        });
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    return Promise.reject(`Что-то пошло не так: ${res.status}`);
+                }
+            });
     }
-    
+
     //получить данные пользователя
     getUserInfo() {
         return fetch(`${this._url}/users/me`, {
             headers: this._headers,
         })
-        .then(res => {
-            if (res.ok) {
-                return res.json();
-            } else {
-                return Promise.reject(`Что-то пошло не так: ${res.status}`);
-            }
-        });
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    return Promise.reject(`Что-то пошло не так: ${res.status}`);
+                }
+            });
     }
 
     //обновить данные юзера
@@ -56,19 +56,19 @@ export default class Api {
     //Редактирование аватара
     editUserAvatar(userData) {
         return fetch(`${this._url}/users/me/avatar`, {
-          method: 'PATCH',
-          headers: this._headers,
-          body: JSON.stringify({
-            avatar: userData.link
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify({
+                avatar: userData.link
+            })
         })
-      })
-        .then(res => {
-          if(res.ok) {
-            return res.json();
-          }
-          return Promise.reject(`Что-то пошло не так: ${res.status}`);
-        })
-      }
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                }
+                return Promise.reject(`Что-то пошло не так: ${res.status}`);
+            })
+    }
 
     //Добавление новой карточки на сервер
     addNewCard(photoData) {
@@ -81,27 +81,27 @@ export default class Api {
 
             })
         })
-        .then((res) => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Что-то пошло не так: ${res.status}`);
-        })
+            .then((res) => {
+                if (res.ok) {
+                    return res.json();
+                }
+                return Promise.reject(`Что-то пошло не так: ${res.status}`);
+            })
     }
 
     //Удаление Карточки
     deleteCard(card) {
         return fetch(`${this._url}/cards/${card._id}`, {
-          method: 'DELETE',
-          headers: this._headers,
+            method: 'DELETE',
+            headers: this._headers,
         })
-        .then((res) => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Что-то пошло не так: ${res.status}`);
-        })
-      }
+            .then((res) => {
+                if (res.ok) {
+                    return res.json();
+                }
+                return Promise.reject(`Что-то пошло не так: ${res.status}`);
+            })
+    }
 
     //Добавление Лайков
     addLike(card) {
@@ -109,12 +109,12 @@ export default class Api {
             method: 'PUT',
             headers: this._headers,
         })
-        .then((res) => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Что-то пошло не так: ${res.status}`);
-        })
+            .then((res) => {
+                if (res.ok) {
+                    return res.json();
+                }
+                return Promise.reject(`Что-то пошло не так: ${res.status}`);
+            })
     }
 
     //Удаление Лайков
@@ -123,14 +123,14 @@ export default class Api {
             method: 'DELETE',
             headers: this._headers,
         })
-        .then((res) => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Что-то пошло не так: ${res.status}`);
-        })
-    } 
-    
+            .then((res) => {
+                if (res.ok) {
+                    return res.json();
+                }
+                return Promise.reject(`Что-то пошло не так: ${res.status}`);
+            })
+    }
+
 
 }
 

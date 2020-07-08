@@ -40,12 +40,7 @@ popupAvatarValidation.enableValidation();
 const showLoading = (loadingStatus, form, defaultBtnText, loadingText) => {  
     const currentForm = document.querySelector(form);
     const selectedBtn = currentForm.querySelector(formSelectors.submitButtonSelector);
-  
-    if(loadingStatus) {
-        selectedBtn.textContent = loadingText;
-    } else {
-        selectedBtn.textContent = defaultBtnText;
-    }
+    selectedBtn.textContent = loadingStatus ? loadingText : defaultBtnText;
 }
 
 //Сохраняем все карточки в обьекты
@@ -56,43 +51,49 @@ const cardsObject = (object, className) => {
     };
 };
 
+//Function card
+const cardGenerator = function (cardItem) {
+     let card = new Card(
+        //data
+        cardItem,
+        {
+            //cardSelector
+            cardSelector: formCard.cardTemplate,
+
+            //handleCardClick
+            handleCardClick: () => {
+                popupWithImage.open(cardItem);
+            },
+            handleCardLike: (cardObject) => {
+                if (cardObject.like) {
+                    deleteLike(cardItem);
+                } else {
+                    addLike(cardItem);
+                }
+                cardsObject(cardItem, card);
+            },
+            handleCardDelete: () => {
+              deleteCardConfirm.open();
+              cardsObject(cardItem, card);
+            } 
+        },
+        userInfo.getUserId()
+        );
+
+        return card;       
+}
+
 //карточка
 const cardList = new Section({
     data: initialCards.reverse(),
     renderer: (cardItem) => {
-        const card = new Card(
-            //data
-            cardItem,
-            {
-                //cardSelector
-                cardSelector: formCard.cardTemplate,
+        
+        const card = cardGenerator(cardItem);
 
-                //handleCardClick
-                handleCardClick: () => {
-                    popupWithImage.open(cardItem);
-                },
-                handleCardLike: (cardObject) => {
-                    if (cardObject.like) {
-                        deleteLike(cardItem);
-                    } else {
-                        addLike(cardItem);
-                    }
-                    cardsObject(cardItem, card);
-                },
-                handleCardDelete: () => {
-                  deleteCardConfirm.open();
-                  cardsObject(cardItem, card);
-                }
-                
-            },
-            userInfo.getUserId()
-            
-            );
         const cardElement = card.generateCard();
         cardList.addItem(cardElement);
     },
 }, formCard.cardSection);
-
 
 //Генерация карточек из масива
 api.getInitialCards()
@@ -131,8 +132,6 @@ const deleteCardConfirm = new PopupWithForm(formCard.popupСonfirm, {
     }
 });
 
-
-
 //Создаем Popup для просмотра карточек
 const popupWithImage = new PopupWithImage(formCard.cardImageView);
 
@@ -145,29 +144,7 @@ const popupWithImageForm = new PopupWithForm(formCard.cardNewItem, {
         api.addNewCard(photoData)
                 .then((photoData) => { 
 
-                    const newCard = new Card(
-                        photoData, 
-                        {
-                            cardSelector: formCard.cardTemplate,
-                            handleCardClick: () => {
-                                popupWithImage.open(photoData);
-                            },
-                            handleCardLike: (cardObject) => {
-                                if (cardObject.like) {
-                                    deleteLike(photoData);
-                                } else {
-                                    addLike(photoData);
-                                }
-                                cardsObject(photoData, newCard);
-                            },
-                            handleCardDelete: () => {
-                              deleteCardConfirm.open();
-                              cardsObject(photoData, newCard);
-                            }
-                            
-                        },
-                        userInfo.getUserId()
-                    );
+                    const newCard = cardGenerator(photoData);
 
                     const newCardElement = newCard.generateCard();
                     cardList.addItem(newCardElement);
@@ -216,7 +193,6 @@ const openEditAvatar = function (formElement) {
     popupAvatarForm.open(); 
 }
 
-
 //Создаем информацию о пользователе для Профиля
 const userInfo = new UserInfo({
     userNameSelector: formProfile.profileName,
@@ -228,7 +204,6 @@ const userInfo = new UserInfo({
 api.getUserInfo()
     .then(userData => userInfo.setUserInfo(userData))
     .catch((err) => console.log(`Ошибка, попробуйте еще: ${err}`));
-
 
 //Создаем Popup для редактирования профиля
 const popupWithUserForm = new PopupWithForm(formProfile.profileEdit, {
@@ -256,21 +231,21 @@ const openUserForm = function (formElement) {
 }
 
 //Слушаем Popup создания новой карточки
+const formElementCardNewItem = document.querySelector(formCard.cardNewItem);
 document.querySelector(formCard.cardAddBtn).addEventListener('click', () => {
-    const formElement = document.querySelector(formCard.cardNewItem);
-    openNewCard(formElement);
+    openNewCard(formElementCardNewItem);
 });
 
 //Слушаем Popup Редактирования профиля
+const formElementProfileEdit = document.querySelector(formProfile.profileEdit);
 document.querySelector(formProfile.profileEditBtn).addEventListener('click', () => {
-    const formElement = document.querySelector(formProfile.profileEdit);
-    openUserForm(formElement);
+    openUserForm(formElementProfileEdit);
 });
 
 //Слушаем Popup Редактирования Аватара
+const formElementEditAvatar = document.querySelector(formProfile.profileAvatar);
 document.querySelector(formProfile.popupEditAvatar).addEventListener('click', () => {
-    const formElement = document.querySelector(formProfile.profileAvatar);
-    openEditAvatar(formElement);
+    openEditAvatar(formElementEditAvatar);
 });
 
 

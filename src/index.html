@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Samira Aghabayova">
     <title>Место</title>
 </head>
+
 <body>
     <div class="page">
         <header class="header">
-           <img class="logo" src="./images/logo.svg" alt="лого">
+            <img class="logo" src="./images/logo.svg" alt="лого">
         </header>
-     
+
         <main>
             <section class="profile">
                 <div class="profile__box">
@@ -23,7 +25,7 @@
                         <h1 class="profile__name" data-id=""></h1>
                         <p class="profile__description"></p>
                     </div>
-                    <button class="profile__edit-button" type="button" ></button>
+                    <button class="profile__edit-button" type="button"></button>
                 </div>
                 <button class="add-button" type="button"></button>
             </section>
@@ -43,7 +45,7 @@
                 </template>
             </section>
 
-            <section class="popup" id="delete-popup"> 
+            <section class="popup" id="delete-popup">
                 <div class="popup__content" id="delete-popup-popup-form">
                     <button class="popup__close" id="delete-close-edit" type="button">+</button>
                     <form class="popup__form popup__delete_card" name="delete">
@@ -52,61 +54,67 @@
                     </form>
                 </div>
             </section>
-            
-            <section class="popup" id="edit-avatar"> 
+
+            <section class="popup" id="edit-avatar">
                 <div class="popup__content" id="edit-avatar-form">
                     <button class="popup__close" id="popup-close-avatar" type="button">+</button>
                     <form class="popup__form popup__avatar" name="new">
                         <h3 class="popup__heading">Обновить аватар</h3>
-                        <input class="popup__field popup__field_avatar" id="url-input" placeholder="Ссылка на картинку" type="url" name="link" required/>
-                        <span class="popup__span-error" id="url-input-error"></span> 
+                        <input class="popup__field popup__field_avatar" id="url-input" placeholder="Ссылка на картинку"
+                            type="url" name="link" required />
+                        <span class="popup__span-error" id="url-input-error"></span>
                         <button class="popup__save-btn" id="popup-create-btn" type="submit">Сохранить</button>
                     </form>
                 </div>
             </section>
-            
+
             <section class="popup" id="edit-popup">
                 <div class="popup__content" id="edit-popup-form">
                     <button class="popup__close" id="popup-close-edit" type="button">+</button>
-                    
+
                     <form class="popup__form popup__edit_profile" name="edit">
                         <h3 class="popup__heading">Редактировать профиль</h3>
-                        <input class="popup__field popup__field_name" id="name-field" placeholder="Имя" type="text" name="name" required pattern="[A-Za-zА-Яа-яЁё -]*" minlength="2" maxlength="40"/>
+                        <input class="popup__field popup__field_name" id="name-field" placeholder="Имя" type="text"
+                            name="name" required pattern="[A-Za-zА-Яа-яЁё -]*" minlength="2" maxlength="40" />
                         <span class="popup__span-error" id="name-field-error"></span>
-                        <input class="popup__field popup__field_job" id="job-field" placeholder="О себе" type="text" name="about" required minlength="2" maxlength="200"/>
+                        <input class="popup__field popup__field_job" id="job-field" placeholder="О себе" type="text"
+                            name="about" required minlength="2" maxlength="200" />
                         <span class="popup__span-error" id="job-field-error"></span>
                         <button class="popup__save-btn" id="popup-save-btn" type="submit">Сохранить</button>
                     </form>
-                </div>    
+                </div>
             </section>
             <section class="popup" id="new-item-popup">
                 <div class="popup__content" id="new-item-form">
                     <button class="popup__close" id="popup-close-new-item" type="button">+</button>
                     <form class="popup__form popup__new_card" name="new">
                         <h3 class="popup__heading">Новое место</h3>
-                        <input class="popup__field popup__field_card" id="title-input" placeholder="Название" type="text" name="name" required minlength="1" maxlength="30"/>
+                        <input class="popup__field popup__field_card" id="title-input" placeholder="Название"
+                            type="text" name="name" required minlength="1" maxlength="30" />
                         <span class="popup__span-error" id="title-input-error"></span>
-                        <input class="popup__field popup__field_link" id="url-input" placeholder="Ссылка на картинку" type="url" required name="link"/>
+                        <input class="popup__field popup__field_link" id="url-input" placeholder="Ссылка на картинку"
+                            type="url" required name="link" />
                         <span class="popup__span-error" id="url-input-error"></span>
                         <button class="popup__save-btn" id="popup-create-btn" type="submit">Создать</button>
                     </form>
                 </div>
             </section>
-            <section class="popup" id="view-image"> 
+            <section class="popup" id="view-image">
                 <figure class="popup__view">
                     <button class="popup__close" id="close-view" type="button">+</button>
                     <img class="popup__image" alt="изображение места" src="#">
-                    <figcaption class="popup__caption"></figcaption>  
+                    <figcaption class="popup__caption"></figcaption>
                 </figure>
             </section>
-            
+
         </main>
         <footer class="footer">
             <p class="footer__copyright">&copy; 2020 Самира</p>
-    
-               
+
+
         </footer>
     </div>
     <script type="nomodule"></script>
 </body>
+
 </html>
