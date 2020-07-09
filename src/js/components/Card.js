@@ -53,10 +53,6 @@ export default class Card {
         //Активируем фунцию проверки лайков
         this._likeCardOwner(this._id);
 
-        //убираем со страницы нулевые лайки
-        if (this._likes.length === 0) {
-            this._cardItem.querySelector('.card__like-counter').style.display = 'none';
-        }
 
         // Добавим данные
         cardPhoto.src = this._link;
@@ -104,11 +100,5 @@ export default class Card {
             this._handleCardClick();
         });
     }
-
-    //управление Кнопкой Лайк
-    //handleCardLike(amount) {
-    //     this._cardItem.querySelector('.card__like-btn').classList.toggle('card__like-btn_active');
-    //     this._cardItem.querySelector('.card__like-counter').textContent = amount;
-    // }
 
 }

@@ -37,7 +37,7 @@ const popupAvatarValidation = new FormValidator(formProfile.popupFormAvatar, for
 popupAvatarValidation.enableValidation();
 
 //Функция UX Загрузка данных
-const showLoading = (loadingStatus, form, defaultBtnText, loadingText) => {  
+const showLoading = (loadingStatus, form, defaultBtnText, loadingText) => {
     const currentForm = document.querySelector(form);
     const selectedBtn = currentForm.querySelector(formSelectors.submitButtonSelector);
     selectedBtn.textContent = loadingStatus ? loadingText : defaultBtnText;
@@ -53,7 +53,7 @@ const cardsObject = (object, className) => {
 
 //Function card
 const cardGenerator = function (cardItem) {
-     let card = new Card(
+    let card = new Card(
         //data
         cardItem,
         {
@@ -73,21 +73,21 @@ const cardGenerator = function (cardItem) {
                 cardsObject(cardItem, card);
             },
             handleCardDelete: () => {
-              deleteCardConfirm.open();
-              cardsObject(cardItem, card);
-            } 
+                deleteCardConfirm.open();
+                cardsObject(cardItem, card);
+            }
         },
         userInfo.getUserId()
-        );
+    );
 
-        return card;       
+    return card;
 }
 
 //карточка
 const cardList = new Section({
     data: initialCards.reverse(),
     renderer: (cardItem) => {
-        
+
         const card = cardGenerator(cardItem);
 
         const cardElement = card.generateCard();
@@ -97,38 +97,38 @@ const cardList = new Section({
 
 //Генерация карточек из масива
 api.getInitialCards()
-.then((data) => {
-    cardList.renderItems(data);
-})
-.catch((err) => console.log(`Ошибка, попробуйте еще: ${err}`));
+    .then((data) => {
+        cardList.renderItems(data);
+    })
+    .catch((err) => console.log(`Ошибка, попробуйте еще: ${err}`));
 
 //Фукция постановки лайков
 let itemsCard;
 const addLike = (data) => {
     api.addLike(data)
-    .then((result) => {
-        itemsCard.class.cardLike(result.likes.length);
-    })
-    .catch((err) => console.log(`Ошибка, попробуйте еще: ${err}`));
+        .then((result) => {
+            itemsCard.class.cardLike(result.likes.length);
+        })
+        .catch((err) => console.log(`Ошибка, попробуйте еще: ${err}`));
 };
 //Фукция удаления лайков
 const deleteLike = (data) => {
     api.deleteLike(data)
-    .then((result) => {
-        itemsCard.class.cardLike(result.likes.length);
-    })
-    .catch((err) => console.log(`Ошибка, попробуйте еще: ${err}`));
-} 
-
-//Создаем Popup подтверждения удаления
-const deleteCardConfirm = new PopupWithForm(formCard.popupСonfirm, {
-    handleFormSubmit: () => {
-        api.deleteCard(itemsCard.object)
         .then((result) => {
-            itemsCard.class.cardDelete();
-            deleteCardConfirm.close();
+            itemsCard.class.cardLike(result.likes.length);
         })
         .catch((err) => console.log(`Ошибка, попробуйте еще: ${err}`));
+}
+
+//Создаем Popup подтверждения удаления
+const deleteCardConfirm = new PopupWithForm(formCard.popupConfirm, {
+    handleFormSubmit: () => {
+        api.deleteCard(itemsCard.object)
+            .then((result) => {
+                itemsCard.class.cardDelete();
+                deleteCardConfirm.close();
+            })
+            .catch((err) => console.log(`Ошибка, попробуйте еще: ${err}`));
     }
 });
 
@@ -138,59 +138,59 @@ const popupWithImage = new PopupWithImage(formCard.cardImageView);
 //Создаем Popup для создания новой карточки
 const popupWithImageForm = new PopupWithForm(formCard.cardNewItem, {
     handleFormSubmit: (photoData) => {
-        
-        showLoading(true, formCard.cardNewItem,'Создать', 'Создание...');
-        
+
+        showLoading(true, formCard.cardNewItem, 'Создать', 'Создание...');
+
         api.addNewCard(photoData)
-                .then((photoData) => { 
+            .then((photoData) => {
 
-                    const newCard = cardGenerator(photoData);
+                const newCard = cardGenerator(photoData);
 
-                    const newCardElement = newCard.generateCard();
-                    cardList.addItem(newCardElement);
-                    popupWithImageForm.close();
+                const newCardElement = newCard.generateCard();
+                cardList.addItem(newCardElement);
+                popupWithImageForm.close();
 
-                })
-                .catch((err) => console.log(`Ошибка, попробуйте еще: ${err}`))
-                .finally(() => {
-                    showLoading(false, formCard.cardNewItem,'Создать', 'Создание...');
-                });
+            })
+            .catch((err) => console.log(`Ошибка, попробуйте еще: ${err}`))
+            .finally(() => {
+                showLoading(false, formCard.cardNewItem, 'Создать', 'Создание...');
+            });
     }
 });
 
 //Функция открытия Popup для создания новой карточки
 const openNewCard = function (formElement) {
     popupImgValidation.errorDefaultState();
-    popupWithImageForm.open(); 
+    popupWithImageForm.open();
 }
 
 //Создаем Popup для редактирования Аватара
 const popupAvatarForm = new PopupWithForm(formProfile.profileAvatar, {
     handleFormSubmit: (userData) => {
         //Активируем Лоадинг
-        showLoading(true, formProfile.profileAvatar,'Сохранить', 'Сохранение...');
+        showLoading(true, formProfile.profileAvatar, 'Сохранить', 'Сохранение...');
 
         api.editUserAvatar(userData)
-        .then((userData) => {
-            userInfo.setAvatarLink(userData);
-        })
-        .catch((err) => console.log(`Ошибка, попробуйте еще: ${err}`))
-        .finally(() => {
-            //Активируем Лоадинг
-            //Проверка работы UX Лоадинга
-            setTimeout(() => {  
-                showLoading(false, formProfile.profileAvatar,'Сохранить', 'Сохранение...');
-                popupAvatarForm.close();
-            }, 5000);
-        });
-        
+            .then((userData) => {
+                userInfo.setAvatarLink(userData);
+            })
+            .catch((err) => console.log(`Ошибка, попробуйте еще: ${err}`))
+            .finally(() => {
+                //Активируем Лоадинг
+                //Проверка работы UX Лоадинга
+                setTimeout(() => {
+                    showLoading(false, formProfile.profileAvatar, 'Сохранить', 'Сохранение...');
+                    popupAvatarForm.close();
+                }, 5000);
+            });
+
     },
 });
 
 //Функция открытия Popup для изменения Аватара
 const openEditAvatar = function (formElement) {
     popupAvatarValidation.errorDefaultState();
-    popupAvatarForm.open(); 
+    popupAvatarForm.open();
 }
 
 //Создаем информацию о пользователе для Профиля
@@ -208,16 +208,16 @@ api.getUserInfo()
 //Создаем Popup для редактирования профиля
 const popupWithUserForm = new PopupWithForm(formProfile.profileEdit, {
     handleFormSubmit: (userData) => {
-        showLoading(true, formProfile.profileEdit,'Сохранить', 'Сохранение...');
+        showLoading(true, formProfile.profileEdit, 'Сохранить', 'Сохранение...');
         api.editUserInfo(userData)
-        .then((userData) => {
-            userInfo.setUserInfo(userData);
-        })
-        .catch((err) => console.log(`Ошибка, попробуйте еще: ${err}`))
-        .finally(() => {
-            popupWithUserForm.close();
-            showLoading(false, formProfile.profileEdit,'Сохранить', 'Сохранение...');
-        });
+            .then((userData) => {
+                userInfo.setUserInfo(userData);
+            })
+            .catch((err) => console.log(`Ошибка, попробуйте еще: ${err}`))
+            .finally(() => {
+                popupWithUserForm.close();
+                showLoading(false, formProfile.profileEdit, 'Сохранить', 'Сохранение...');
+            });
     },
 });
 

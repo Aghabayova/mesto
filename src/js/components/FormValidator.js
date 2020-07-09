@@ -29,7 +29,7 @@ export default class FormValidator {
   }
   //переключает кнопку в зависимости от валидности
   _toggleButtonState() {
-    if(this._hasInvalidInput()) {
+    if (this._hasInvalidInput()) {
       this._buttonElement.classList.toggle(this._formSelectors.submitButtonDisabled, true);
       this._buttonElement.disabled = true;
     } else {
@@ -69,12 +69,12 @@ export default class FormValidator {
 
     this._inputElements.forEach((inputElement) => {
       const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
-      
+
       inputElement.classList.remove(this._formSelectors.inputErrorClass);
       errorElement.classList.remove(this._formSelectors.spanErrorClassActive);
 
       this._toggleButtonState();
-   
+
     });
   }
 }

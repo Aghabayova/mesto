@@ -1,35 +1,6 @@
 //массив карточек
 export const initialCards = [
 ];
-/*
-export const initialCards = [
-    {
-        name: 'Баку',
-        link: 'https://images.unsplash.com/photo-1539707437856-00c96b325eab?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80'
-    },
-    {
-        name: 'Прага',
-        link: 'https://images.unsplash.com/photo-1503410781609-75b1d892dd28?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'
-    },
-    {
-        name: 'Гамбург',
-        link: 'https://i.ytimg.com/vi/guEG3AX4Uww/maxresdefault.jpg'
-    },
-    {
-        name: 'Орландо',
-        link: 'https://images.unsplash.com/photo-1567650450376-f8a68db2cabb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
-    },
-    {
-        name: 'Гамбург',
-        link: 'https://images.unsplash.com/photo-1547623641-82fbb83476e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
-    },
-    {
-        name: 'Баку',
-        link: 'https://i1.wp.com/eti.uk.com/wp-content/uploads/2016/09/baku.jpg?resize=800%2C400&ssl=1'
-    },
-
-];
-*/
 
 //Api Token
 export const apiData = {
@@ -67,10 +38,10 @@ export const formCard = {
     cardImageView: '#view-image',
     cardInpuTitle: '#title-input',
     cardInputUrl: '#url-input',
-    popupСonfirm: '#delete-popup',
+    popupConfirm: '#delete-popup',
     popupFormDelete: '.popup__delete_card',
     cardTrash: '.card__trash'
-    
+
 };
 
 //Массив Структуры Карточек
